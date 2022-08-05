@@ -1,0 +1,11 @@
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: cluster-admins
+users:
+  - codekow
+  - adrezni
+  - TroyNelson11
+  - sabre1041
+  - hemajv
+  - strangiato
