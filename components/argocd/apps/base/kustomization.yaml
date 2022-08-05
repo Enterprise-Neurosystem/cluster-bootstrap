@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - cluster-config-manager-app.yaml
+  - cluster-rbac-app.yaml
