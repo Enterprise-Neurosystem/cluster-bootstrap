@@ -25,7 +25,7 @@ ARGO_NS="openshift-gitops"
 echo ""
 echo "Installing GitOps Operator."
 
-kustomize build components/operators/openshift-gitops/operator/overlays/stable/ | oc apply -f -
+kustomize build components/operators/openshift-gitops/operator/overlays/latest/ | oc apply -f -
 
 echo "Pause $SLEEP_SECONDS seconds for the creation of the gitops-operator..."
 sleep $SLEEP_SECONDS
