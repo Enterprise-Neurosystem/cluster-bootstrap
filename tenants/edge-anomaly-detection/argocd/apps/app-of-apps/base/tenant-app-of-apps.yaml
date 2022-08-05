@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: edge-anomaly-detection-app-of-apps
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: edge-anomaly-detection-tenant
+  source:
+    path: clusters/edge-anomaly-detection/argocd
+    repoURL: https://github.com/Enterprise-Neurosystem/cluster-bootstrap.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
