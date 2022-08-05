@@ -1,86 +1,185 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ArgoCD
 metadata:
+  creationTimestamp: '2022-08-05T22:02:50Z'
+  finalizers:
+    - argoproj.io/finalizer
+  generation: 2
+  managedFields:
+    - apiVersion: argoproj.io/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:rbac':
+            .: {}
+            'f:defaultPolicy': {}
+            'f:policy': {}
+            'f:scopes': {}
+          'f:repo':
+            .: {}
+            'f:resources':
+              .: {}
+              'f:limits': {}
+              'f:requests':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+          'f:redis':
+            .: {}
+            'f:resources':
+              .: {}
+              'f:limits':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+              'f:requests':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+          'f:resourceExclusions': {}
+          'f:ha':
+            .: {}
+            'f:enabled': {}
+            'f:resources':
+              .: {}
+              'f:limits':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+              'f:requests':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+          .: {}
+          'f:controller':
+            .: {}
+            'f:resources':
+              .: {}
+              'f:limits': {}
+              'f:requests':
+                .: {}
+                'f:cpu': {}
+          'f:server':
+            .: {}
+            'f:resources':
+              .: {}
+              'f:limits':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+              'f:requests':
+                .: {}
+                'f:cpu': {}
+                'f:memory': {}
+            'f:route':
+              .: {}
+              'f:enabled': {}
+          'f:sso':
+            .: {}
+            'f:dex':
+              .: {}
+              'f:openShiftOAuth': {}
+              'f:resources':
+                .: {}
+                'f:limits':
+                  .: {}
+                  'f:cpu': {}
+                  'f:memory': {}
+                'f:requests':
+                  .: {}
+                  'f:cpu': {}
+                  'f:memory': {}
+            'f:provider': {}
+      manager: Mozilla
+      operation: Update
+      time: '2022-08-05T22:02:50Z'
+    - apiVersion: argoproj.io/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:finalizers':
+            .: {}
+            'v:"argoproj.io/finalizer"': {}
+        'f:spec':
+          'f:controller':
+            'f:processors': {}
+            'f:resources':
+              'f:limits':
+                'f:cpu': {}
+                'f:memory': {}
+              'f:requests':
+                'f:memory': {}
+            'f:sharding': {}
+          'f:grafana':
+            .: {}
+            'f:enabled': {}
+            'f:ingress':
+              .: {}
+              'f:enabled': {}
+            'f:route':
+              .: {}
+              'f:enabled': {}
+          'f:initialSSHKnownHosts': {}
+          'f:notifications':
+            .: {}
+            'f:enabled': {}
+          'f:prometheus':
+            .: {}
+            'f:enabled': {}
+            'f:ingress':
+              .: {}
+              'f:enabled': {}
+            'f:route':
+              .: {}
+              'f:enabled': {}
+          'f:repo':
+            'f:resources':
+              'f:limits':
+                'f:cpu': {}
+                'f:memory': {}
+          'f:server':
+            'f:autoscale':
+              .: {}
+              'f:enabled': {}
+            'f:grpc':
+              .: {}
+              'f:ingress':
+                .: {}
+                'f:enabled': {}
+            'f:ingress':
+              .: {}
+              'f:enabled': {}
+            'f:service':
+              .: {}
+              'f:type': {}
+          'f:tls':
+            .: {}
+            'f:ca': {}
+      manager: manager
+      operation: Update
+      time: '2022-08-05T22:02:50Z'
+    - apiVersion: argoproj.io/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:dex': {}
+          'f:repo': {}
+          'f:redis': {}
+          'f:phase': {}
+          .: {}
+          'f:server': {}
+          'f:applicationController': {}
+          'f:host': {}
+          'f:ssoConfig': {}
+      manager: manager
+      operation: Update
+      subresource: status
+      time: '2022-08-05T22:02:52Z'
   name: argocd
+  namespace: gitops-test
+  resourceVersion: '11005233'
+  uid: 1c94da4c-ac8d-4a29-9474-f8ac92b91434
 spec:
-  applicationSet:
-    resources:
-      limits:
-        cpu: "2"
-        memory: 1Gi
-      requests:
-        cpu: 250m
-        memory: 512Mi
-  controller:
-    processors: {}
-    resources:
-      limits:
-        cpu: "2"
-        memory: 2Gi
-      requests:
-        cpu: 250m
-        memory: 1Gi
-    sharding: {}
-  grafana:
-    enabled: false
-    ingress:
-      enabled: false
-    resources:
-      limits:
-        cpu: 500m
-        memory: 256Mi
-      requests:
-        cpu: 250m
-        memory: 128Mi
-    route:
-      enabled: false
-  ha:
-    enabled: false
-    resources:
-      limits:
-        cpu: 500m
-        memory: 256Mi
-      requests:
-        cpu: 250m
-        memory: 128Mi
-  initialSSHKnownHosts: {}
-  notifications:
-    enabled: false
-  prometheus:
-    enabled: false
-    ingress:
-      enabled: false
-    route:
-      enabled: false
-  rbac:
-    policy: |
-      g, system:cluster-admins, role:admin
-      g, cluster-admins, role:admin
-    scopes: '[groups]'
-  redis:
-    resources:
-      limits:
-        cpu: 500m
-        memory: 256Mi
-      requests:
-        cpu: 250m
-        memory: 128Mi
-  repo:
-    resources:
-      limits:
-        cpu: "1"
-        memory: 1Gi
-      requests:
-        cpu: 250m
-        memory: 256Mi
-  resourceExclusions: |
-    - apiGroups:
-      - tekton.dev
-      clusters:
-      - '*'
-      kinds:
-      - TaskRun
-      - PipelineRun
   server:
     autoscale:
       enabled: false
@@ -99,7 +198,22 @@ spec:
     route:
       enabled: true
     service:
-      type: ""
+      type: ''
+  grafana:
+    enabled: false
+    ingress:
+      enabled: false
+    route:
+      enabled: false
+  notifications:
+    enabled: false
+  prometheus:
+    enabled: false
+    ingress:
+      enabled: false
+    route:
+      enabled: false
+  initialSSHKnownHosts: {}
   sso:
     dex:
       openShiftOAuth: true
@@ -111,5 +225,53 @@ spec:
           cpu: 250m
           memory: 128Mi
     provider: dex
+  rbac:
+    defaultPolicy: ''
+    policy: |
+      g, system:cluster-admins, role:admin
+    scopes: '[groups]'
+  repo:
+    resources:
+      limits:
+        cpu: '1'
+        memory: 1Gi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+  resourceExclusions: |
+    - apiGroups:
+      - tekton.dev
+      clusters:
+      - '*'
+      kinds:
+      - TaskRun
+      - PipelineRun        
+  ha:
+    enabled: false
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 250m
+        memory: 128Mi
   tls:
     ca: {}
+  redis:
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 250m
+        memory: 128Mi
+  controller:
+    processors: {}
+    resources:
+      limits:
+        cpu: '2'
+        memory: 2Gi
+      requests:
+        cpu: 250m
+        memory: 1Gi
+    sharding: {}
