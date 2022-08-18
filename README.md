@@ -4,6 +4,13 @@ This project is still a work in progress.
 
 The intention is that this will allow you to easily bootstrap an OpenShift-GitOps instance to a new cluster which will then instantiate several operators on the cluster.
 
+## Team Members
+1. Trevor Royer
+1. Cory Latschkowski
+
+## Meetings
+No meetings at this time.  For more information please contact Trevor Royer (troyer@redhat.com)
+
 ## Components
 
 - OpenShift GitOps Operator
