@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 USER=user
 PASS=ThisIsFine
@@ -25,7 +25,7 @@ create_htpasswd(){
 
 }
 
-create_ns(){
+create_user_ns(){
 
     for i in {01..20}
     do
@@ -65,7 +65,7 @@ clean_ns(){
 
 check_path
 create_htpasswd
-create_ns
+create_user_ns
 #create_pgadmin
 
 #clean_ns
