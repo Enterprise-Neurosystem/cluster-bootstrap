@@ -48,7 +48,7 @@ create_pgadmin(){
     --image docker.io/dpage/pgadmin4 \
     --name ${NAME} \
     PGADMIN_DEFAULT_EMAIL=user@example.com \
-    PGADMIN_DEFAULT_PASSWORD=ThisIsFine
+    PGADMIN_DEFAULT_PASSWORD=${PASS}
 
     oc expose service/${NAME}
 
