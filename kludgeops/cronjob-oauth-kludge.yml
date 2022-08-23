@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  labels:
+    kludge: "true"
+  name: kludge-htpasswd-workshop
+  namespace: openshift-config
+spec:
+  concurrencyPolicy: Replace
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - args:
+            - /bin/bash
+            - -c
+            - |-
+              #set -x
+              CURRENT=$(oc extract secret/htpasswd-secret --to=- | sha256sum)
+              EXPECTED=$(oc extract secret/workshop-htpasswd --to=- | sha256sum)
+              if [ "x${CURRENT}" == "x${EXPECTED}"  ]; then
+                echo OK
+              else
+                oc extract secret/htpasswd-secret --to=- | sha256sum
+                oc extract secret/workshop-htpasswd --to=- | sha256sum
+
+                oc extract secret/workshop-htpasswd
+                oc set data secret/htpasswd-secret --from-file=htpasswd
+              fi
+            image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
+            name: kludge-htpasswd-workshop
+          serviceAccount: kludge-sa
+          restartPolicy: Never
+  schedule: '*/1 * * * *'
+  successfulJobsHistoryLimit: 3
