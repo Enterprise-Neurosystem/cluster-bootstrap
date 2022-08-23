@@ -1,11 +1,11 @@
 #!/bin/bash
 
 USER=user
-PASS=ThisIsFine
+PASS=WorkshopPassword
 GROUP=workshop-attendees
 TMP_DIR=generated
 
-PGAMDIN_NS=db-veiwer
+PGAMDIN_NS=db-viewer
 
 check_path(){
     mkdir -p ${TMP_DIR}
@@ -41,16 +41,24 @@ create_user_ns(){
 create_pgadmin(){
     NAME=pgadmin4
 
-    oc create ns ${NS}
+    oc create ns ${PGAMDIN_NS}
 
     oc -n ${PGAMDIN_NS} \
-    new-app \
-    --image docker.io/dpage/pgadmin4 \
-    --name ${NAME} \
-    PGADMIN_DEFAULT_EMAIL=user@example.com \
-    PGADMIN_DEFAULT_PASSWORD=${PASS}
+        new-app \
+        --image docker.io/dpage/pgadmin4 \
+        --name ${NAME} \
+        PGADMIN_DEFAULT_EMAIL=user@example.com \
+        PGADMIN_DEFAULT_PASSWORD=${PASS}
 
-    oc expose service/${NAME}
+    oc -n ${PGAMDIN_NS} \
+        expose service/${NAME}
+
+    #oc -n ${PGAMDIN_NS} \
+    #    set volume deploy/${NAME} \
+    #    --add --name=pgadmin4-volume-1 \
+    #    -t pvc --claim-size=512M \
+    #    --claim-name=${NAME}-pvc --overwrite
+
 
 }
 
@@ -66,6 +74,6 @@ clean_ns(){
 check_path
 create_htpasswd
 create_user_ns
-#create_pgadmin
+create_pgadmin
 
 #clean_ns
