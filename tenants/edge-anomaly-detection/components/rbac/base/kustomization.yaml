@@ -9,3 +9,4 @@ resources:
   - kafka-anomaly-admins-rolebinding.yaml
   - project-admin-group.yaml
   - self-provisioner-clusterrolebinding.yaml
+  - sandbox-admins-rolebinding.yaml
