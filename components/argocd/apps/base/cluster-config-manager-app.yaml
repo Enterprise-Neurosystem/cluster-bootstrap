@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: cluster-config
   source:
-    path: clusters/rhods/argocd/
+    path: clusters/rhods/argocd/overlays/defaults
     repoURL: https://github.com/Enterprise-Neurosystem/cluster-bootstrap.git
     targetRevision: main
   syncPolicy:

@@ -8,7 +8,6 @@ bases:
   - ../../../components/argocd/applicationsets/overlays/default
   - ../../../components/argocd/projects/overlays/default
   - ../../../tenants/edge-anomaly-detection/argocd/applicationsets/overlays/default
-  - ../../../tenants/edge-anomaly-detection/argocd/apps/overlays/default
   - ../../../tenants/edge-anomaly-detection/argocd/projects/overlays/default
 
 patches:
