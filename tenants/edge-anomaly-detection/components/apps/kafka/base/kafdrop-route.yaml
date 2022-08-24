@@ -9,5 +9,5 @@ spec:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
   to:
-    kind: ""
+    kind: Service
     name: kafdrop
