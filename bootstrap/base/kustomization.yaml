@@ -3,4 +3,4 @@ kind: Kustomization
 
 bases:
   - ../../components/operators/openshift-gitops/instance/overlays/rhods/
-  - ../../clusters/rhods/argocd/overlays/defaults
+  - ../../clusters/rhods/argocd/overlays/default

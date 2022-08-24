@@ -3,4 +3,4 @@ kind: Kustomization
 
 bases:
   - ../../base
-  - ../../../tenants/edge-anomaly-detection/argocd/apps/overlays/default
+  - ../../../../../tenants/edge-anomaly-detection/argocd/apps/overlays/default

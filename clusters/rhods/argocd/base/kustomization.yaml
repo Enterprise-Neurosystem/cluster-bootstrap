@@ -4,11 +4,11 @@ kind: Kustomization
 namespace: openshift-gitops
 
 bases:
-  - ../../../components/argocd/apps/overlays/default
-  - ../../../components/argocd/applicationsets/overlays/default
-  - ../../../components/argocd/projects/overlays/default
-  - ../../../tenants/edge-anomaly-detection/argocd/applicationsets/overlays/default
-  - ../../../tenants/edge-anomaly-detection/argocd/projects/overlays/default
+  - ../../../../components/argocd/apps/overlays/default
+  - ../../../../components/argocd/applicationsets/overlays/default
+  - ../../../../components/argocd/projects/overlays/default
+  - ../../../../tenants/edge-anomaly-detection/argocd/applicationsets/overlays/default
+  - ../../../../tenants/edge-anomaly-detection/argocd/projects/overlays/default
 
 patches:
   - path: patch-applicationset-repo-revision.yaml
