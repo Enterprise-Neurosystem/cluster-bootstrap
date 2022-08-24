@@ -6,3 +6,4 @@ resources:
   - edge-anomaly-detection-namespace.yaml
   - edge-demo-anomaly-detection-namespace.yaml
   - kafka-anomaly-namespace.yaml
+  - sandbox-namespace.yaml
