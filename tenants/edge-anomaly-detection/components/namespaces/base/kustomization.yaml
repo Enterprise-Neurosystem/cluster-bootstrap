@@ -5,3 +5,4 @@ resources:
   - edge-anomaly-detection-gitops-namespace.yaml
   - edge-anomaly-detection-namespace.yaml
   - edge-demo-anomaly-detection-namespace.yaml
+  - kafka-anomaly-namespace.yaml
