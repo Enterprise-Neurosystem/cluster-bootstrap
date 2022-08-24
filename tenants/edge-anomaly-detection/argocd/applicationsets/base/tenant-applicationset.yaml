@@ -12,7 +12,7 @@ spec:
         - cluster: local
           url: https://kubernetes.default.svc
           values:
-            name: edge-anomaly-detection-apps
+            name: edge-anomaly-detection-kafka
             path: tenants/edge-anomaly-detection/components/apps/kafka/overlays/default/
         - cluster: local
           url: https://kubernetes.default.svc
