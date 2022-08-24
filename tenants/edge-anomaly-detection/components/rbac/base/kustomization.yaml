@@ -6,4 +6,5 @@ resources:
   - edge-anomaly-detection-cluster-reader.yaml
   - edge-anomaly-detection-gitops-admins-rolebinding.yaml
   - edge-demo-anomaly-detection-admins-rolebinding.yaml
+  - kafka-anomaly-admins-rolebinding.yaml
   - project-admin-group.yaml
