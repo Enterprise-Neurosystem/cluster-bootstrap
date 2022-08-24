@@ -46,7 +46,7 @@ spec:
           backoff:
             duration: 5s
             factor: 2
-            maxDuration: 3m
+            #maxDuration: 3m
       source:
         repoURL: 'https://github.com/Enterprise-Neurosystem/cluster-bootstrap.git'
         targetRevision: main
