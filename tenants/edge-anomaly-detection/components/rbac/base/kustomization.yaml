@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - edge-anomaly-detection-admins-rolebinding.yaml
+  - edge-anomaly-detection-cluster-reader.yaml
   - edge-anomaly-detection-gitops-admins-rolebinding.yaml
   - edge-demo-anomaly-detection-admins-rolebinding.yaml
   - project-admin-group.yaml
