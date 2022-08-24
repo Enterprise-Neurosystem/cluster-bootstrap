@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafdrop
+spec:
+  destination:
+    namespace: kafka-anomaly
+    server: 'https://kubernetes.default.svc'
+  project: edge-anomaly-detection-tenant
+  source:
+    helm:
+      parameters:
+        - name: kafka.brokerConnect
+          value: 'kafka-cluster-kafka-bootstrap.kafka-anomaly.svc.cluster.local:9092'
+        - name: jvm.opts
+          value: '-Xms32M -Xmx64M'
+    path: chart
+    repoURL: 'https://github.com/obsidiandynamics/kafdrop.git'
+    targetRevision: HEAD
