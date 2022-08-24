@@ -2,7 +2,6 @@ kind: Kafka
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
   name: kafka-cluster
-  namespace: kafka-anomaly
 spec:
   kafka:
     replicas: 3
