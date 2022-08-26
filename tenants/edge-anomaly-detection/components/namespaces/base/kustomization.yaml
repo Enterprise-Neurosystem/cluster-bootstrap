@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+  - db-viewer-namespace.yaml
   - edge-anomaly-detection-gitops-namespace.yaml
   - edge-anomaly-detection-namespace.yaml
   - edge-demo-anomaly-detection-namespace.yaml
