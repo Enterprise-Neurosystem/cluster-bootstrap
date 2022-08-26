@@ -62,18 +62,22 @@ create_pgadmin(){
 
 }
 
-clean_ns(){
+clean_user_ns(){
     for i in {01..20}
     do
         oc delete project ${USER}${i}
     done
 
-    oc delete ns ${PGAMDIN_NS}
 }
 
+clean_other_ns(){
+    oc delete ns ${PGAMDIN_NS}
+    oc -n rhods-notebooks \
+        delete po -l app=jupyterhub
+}
 check_path
-create_htpasswd
+#create_htpasswd
 create_user_ns
-create_pgadmin
+#create_pgadmin
 
-#clean_ns
+#clean_user_ns
