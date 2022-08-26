@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kafdrop
+  name: edge-anomaly-detection-kafdrop
 spec:
   syncPolicy:
     automated:
@@ -13,6 +13,8 @@ spec:
   source:
     helm:
       parameters:
+        - name: fullnameOverride
+          value: kafdrop
         - name: kafka.brokerConnect
           value: 'kafka-cluster-kafka-bootstrap.kafka-anomaly.svc.cluster.local:9092'
         - name: jvm.opts
