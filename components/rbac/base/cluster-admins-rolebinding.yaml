@@ -5,7 +5,7 @@ metadata:
 subjects:
   - kind: Group
     apiGroup: rbac.authorization.k8s.io
-    name: 'system:cluster-admins'
+    name: 'cluster-admins'
   - kind: User
     apiGroup: rbac.authorization.k8s.io
     name: 'system:admin'
