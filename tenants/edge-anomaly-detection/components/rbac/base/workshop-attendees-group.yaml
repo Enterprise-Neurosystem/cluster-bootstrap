@@ -3,6 +3,7 @@ apiVersion: user.openshift.io/v1
 metadata:
   name: workshop-attendees
 users:
+  - user00
   - user01
   - user02
   - user03

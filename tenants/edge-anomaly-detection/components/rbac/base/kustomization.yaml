@@ -9,5 +9,6 @@ resources:
   - edge-demo-anomaly-detection-admins-rolebinding.yaml
   - kafka-anomaly-admins-rolebinding.yaml
   - project-admin-group.yaml
-  - self-provisioner-clusterrolebinding.yaml
   - sandbox-admins-rolebinding.yaml
+  - self-provisioner-clusterrolebinding.yaml
+  - workshop-attendees-group.yaml
