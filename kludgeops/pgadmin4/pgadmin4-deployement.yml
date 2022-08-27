@@ -39,4 +39,7 @@
             name: pgadmin4-volume-1
         volumes:
         - emptyDir: {}
+          name: empty
+        - persistentVolumeClaim:
+            claimName: pgadmin4-pvc
           name: pgadmin4-volume-1
