@@ -2,7 +2,7 @@
   kind: Deployment
   metadata:
     annotations:
-      image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"pgadmin4:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"pgadmin4\")].image"}]'
+      image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"pgadmin4:patch"},"fieldPath":"spec.template.spec.containers[?(@.name==\"pgadmin4\")].image"}]'
     labels:
       app: pgadmin4
       app.kubernetes.io/component: pgadmin4

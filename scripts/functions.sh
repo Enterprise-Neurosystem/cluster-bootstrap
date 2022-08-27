@@ -102,6 +102,15 @@ create_pgadmin(){
     #     --claim-name=${APP_NAME}-pvc \
     #     --overwrite > ${OBJ_DIR}/${APP_NS}-pvc.yml
 
+    oc -n ${APP_NS} \
+        start-build ${APP_NAME}-patch \
+        --follow
+
+    # oc -n ${APP_NS} \
+    #     set image deployment ${APP_NAME} \
+    #     --source=imagestreamtag \
+    #     ${NAME}=${NAME}:patch
+
 }
 
 clean_user_notebooks(){

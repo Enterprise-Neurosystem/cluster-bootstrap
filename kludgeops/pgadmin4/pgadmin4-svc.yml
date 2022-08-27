@@ -9,13 +9,13 @@ metadata:
   namespace: pgadmin4
 spec:
   ports:
-  - name: 80-tcp
-    port: 80
+  - name: 8080-tcp
+    port: 8080
     protocol: TCP
-    targetPort: 80
-  - name: 443-tcp
-    port: 443
+    targetPort: 8080
+  - name: 8443-tcp
+    port: 8443
     protocol: TCP
-    targetPort: 443
+    targetPort: 8443
   selector:
     deployment: pgadmin4
