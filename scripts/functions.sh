@@ -60,7 +60,7 @@ create_user_ns(){
 
 create_pgadmin(){
     APP_NAME=pgadmin4
-    APP_NS=${APP_NAME}
+    APP_NS=db-viewer
 
     OBJ_DIR=kludgeops/${APP_NAME}
 
