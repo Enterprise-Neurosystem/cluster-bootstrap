@@ -7,11 +7,15 @@ TMP_DIR=generated
 
 PGAMDIN_NS=db-viewer
 
-check_path(){
-    mkdir -p ${TMP_DIR}
+check_init(){
+    # do you have oc
+    which oc > /dev/null || exit 1
+
+    # create generated folder
+    [ ! -d ${TMP_DIR} ] && mkdir -p ${TMP_DIR}
 }
 
-create_htpasswd(){
+create_user_htpasswd(){
     FILE=${TMP_DIR}/htpasswd
 
     touch ${FILE}
@@ -75,9 +79,5 @@ clean_other_ns(){
     oc -n rhods-notebooks \
         delete po -l app=jupyterhub
 }
-check_path
-#create_htpasswd
-create_user_ns
-#create_pgadmin
 
-#clean_user_ns
+echo "Workshop: Functions Loaded"
