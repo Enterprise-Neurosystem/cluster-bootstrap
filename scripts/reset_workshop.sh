@@ -5,11 +5,11 @@ source $(dirname $0)/functions.sh
 USER=user
 PASS=WorkshopPassword
 
-echo "Workshop: Start Setup"
+echo "Workshop: Clean User Namespaces"
 
 check_init
 
-create_user_htpasswd
-create_user_ns
+clean_user_notebooks
+clean_user_ns
 
-create_pgadmin
+create_user_ns
