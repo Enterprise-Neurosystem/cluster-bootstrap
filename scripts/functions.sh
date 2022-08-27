@@ -19,7 +19,7 @@ create_user_htpasswd(){
 
     which htpasswd || return
 
-    for i in {01..20}
+    for i in {00..20}
     do
         htpasswd -bB ${FILE} ${USER}${i} ${PASS}${i}
     done
@@ -33,25 +33,25 @@ create_user_ns(){
     OBJ_DIR=${TMP_DIR}/users
     [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
 
-    for i in {01..20}
+    for i in {00..20}
     do
         # create ns
         oc -o yaml --dry-run=client \
-          create ns ${USER}${i} > ${OBJ_DIR}/ns-${USER}${i}.yml
+          create ns ${USER}${i} > ${OBJ_DIR}/${USER}${i}-ns.yml
 
         # create role binding - admin for user
         oc -o yaml --dry-run=client \
           -n ${USER}${i} \
           create rolebinding ${USER}${i}-admin \
           --user ${USER}${i} \
-          --clusterrole admin > ${OBJ_DIR}/rb-ns-${USER}${i}-admin.yml
+          --clusterrole admin > ${OBJ_DIR}/${USER}${i}-ns-admin-rb.yml
 
         # create role binding - view for workshop group
         oc -o yaml --dry-run=client \
           -n ${USER}${i} \
           create rolebinding ${USER}${i}-view \
           --group ${GROUP} \
-          --clusterrole view > ${OBJ_DIR}/rb-ns-${USER}${i}-view.yml
+          --clusterrole view > ${OBJ_DIR}/${USER}${i}-rb-ns-view.yml
     done
 
     # apply objects created in scratch dir
@@ -62,27 +62,45 @@ create_pgadmin(){
     APP_NAME=pgadmin4
     APP_NS=${APP_NAME}
 
-    OBJ_DIR=${TMP_DIR}/${APP_NAME}
-    [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
+    OBJ_DIR=kludgeops/${APP_NAME}
 
-    oc create ns ${APP_NS}
+    # apply objects created in kludeops dir
+    oc apply -n ${APP_NS} -f ${OBJ_DIR}
 
-    oc -n ${APP_NS} \
-        new-app \
-        --image docker.io/dpage/pgadmin4 \
-        --name ${APP_NAME} \
-        PGADMIN_DEFAULT_EMAIL=user@example.com \
-        PGADMIN_DEFAULT_PASSWORD=${PASS}
+    # OBJ_DIR=${TMP_DIR}/${APP_NAME}
+    # [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
 
-    oc -n ${APP_NS} \
-        expose service/${APP_NAME}
+    # oc -o yaml --dry-run=client \
+    #     create ns ${APP_NS} > ${OBJ_DIR}/${APP_NS}-ns.yml
 
-    oc -n ${APP_NS} \
-       set volume deploy/${APP_NAME} \
-       --add --name=pgadmin4-volume-1 \
-       -t pvc --claim-size=512M \
-       --claim-name=${APP_NAME}-pvc --overwrite
+    # oc -o yaml --dry-run=true \
+    #     import-image ${APP_NAME} \
+    #     --from docker.io/dpage/pgadmin4:latest \
+    #     --confirm > ${OBJ_DIR}/${APP_NS}-imagestream.yml
 
+    #  oc -o yaml --dry-run=true \
+    #     -n ${APP_NS} \
+    #     new-app \
+    #     --allow-missing-images=true \
+    #     --image docker.io/dpage/pgadmin4:latest \
+    #     --name ${APP_NAME} \
+    #     PGADMIN_DEFAULT_EMAIL=user@example.com \
+    #     PGADMIN_DEFAULT_PASSWORD=${PASS} > ${OBJ_DIR}/${APP_NS}-new-app.yml
+
+    #  oc -o yaml --dry-run=client \
+    #     -n ${APP_NS} \
+    #     create route edge \
+    #     --service=${APP_NAME} \
+    #     --insecure-policy=Redirect \
+    #     --port=8080 > ${OBJ_DIR}/${APP_NS}-route.yml
+
+    #  oc -o yaml --dry-run=client \
+    #     -n ${APP_NS} \
+    #     set volume deploy/${APP_NAME} \
+    #     --add --name=pgadmin4-volume-1 \
+    #     -t pvc --claim-size=1Gi \
+    #     --claim-name=${APP_NAME}-pvc \
+    #     --overwrite > ${OBJ_DIR}/${APP_NS}-pvc.yml
 
 }
 
@@ -92,7 +110,7 @@ clean_user_notebooks(){
 }
 
 clean_user_ns(){
-    for i in {01..20}
+    for i in {00..20}
     do
         oc delete project ${USER}${i}
     done
