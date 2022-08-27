@@ -1,0 +1,33 @@
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  name: cluster
+spec:
+  identityProviders:
+    - github:
+        ca:
+          name: ''
+        clientID: 4375140b4d27dda75823
+        clientSecret:
+          name: github-en
+        hostname: ''
+        organizations:
+          - Enterprise-Neurosystem
+      mappingMethod: claim
+      name: GitHubEN
+      type: GitHub
+    - htpasswd:
+        fileData:
+          name: workshop-htpasswd
+      mappingMethod: claim
+      name: WorkshopAttendees
+      type: HTPasswd
+  templates:
+    error:
+      name: osd-oauth-templates-errors
+    login:
+      name: osd-oauth-templates-login
+    providerSelection:
+      name: osd-oauth-templates-providers
+  tokenConfig:
+    accessTokenMaxAgeSeconds: 0
