@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2034,SC2044
 
 source "$(dirname $0)/workshop.sh"
 
