@@ -4,7 +4,13 @@ rules:
   document-start: disable
   line-length: disable
   comments-indentation: disable
+  new-line-at-end-of-file: disable
+  indentation:
+    indent-sequences: whatever
+    ignore: kludgeops/
   braces:
-    ignore: /grafana-operator/base/instance/grafana.yaml
+    ignore: grafana-operator/base/instance/grafana.yaml
   truthy:
     ignore: .github/workflows/
+  trailing-spaces:
+    ignore: components/operators/openshift-gitops/instance/overlays/rhods/patch-resource-customizations.yaml

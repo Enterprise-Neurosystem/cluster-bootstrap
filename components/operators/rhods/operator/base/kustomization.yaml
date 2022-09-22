@@ -6,4 +6,3 @@ namespace: redhat-ods-operator
 resources:
   - namespace.yaml
   - subscription.yaml
-  
