@@ -21,7 +21,7 @@ create_user_htpasswd(){
 
     for i in {00..20}
     do
-        htpasswd -bB ${FILE} ${USER}${i} ${PASS}${i}
+        htpasswd -bB ${FILE} "${USER}${i}" "${PASS}${i}"
     done
 
     oc -n openshift-config create secret generic workshop-htpasswd --from-file=${FILE}
@@ -37,21 +37,21 @@ create_user_ns(){
     do
         # create ns
         oc -o yaml --dry-run=client \
-          create ns ${USER}${i} > ${OBJ_DIR}/${USER}${i}-ns.yml
+          create ns "${USER}${i}" > "${OBJ_DIR}/${USER}${i}-ns.yml"
 
         # create role binding - admin for user
         oc -o yaml --dry-run=client \
-          -n ${USER}${i} \
-          create rolebinding ${USER}${i}-admin \
-          --user ${USER}${i} \
-          --clusterrole admin > ${OBJ_DIR}/${USER}${i}-ns-admin-rb.yml
+          -n "${USER}${i}" \
+          create rolebinding "${USER}${i}-admin" \
+          --user "${USER}${i}" \
+          --clusterrole admin > "${OBJ_DIR}/${USER}${i}-ns-admin-rb.yml"
 
         # create role binding - view for workshop group
         oc -o yaml --dry-run=client \
-          -n ${USER}${i} \
-          create rolebinding ${USER}${i}-view \
+          -n "${USER}${i}" \
+          create rolebinding "${USER}${i}-view" \
           --group ${GROUP} \
-          --clusterrole view > ${OBJ_DIR}/${USER}${i}-rb-ns-view.yml
+          --clusterrole view > "${OBJ_DIR}/${USER}${i}-rb-ns-view.yml"
     done
 
     # apply objects created in scratch dir
@@ -121,7 +121,7 @@ clean_user_notebooks(){
 clean_user_ns(){
     for i in {00..20}
     do
-        oc delete project ${USER}${i}
+        oc delete project "${USER}${i}"
     done
 }
 

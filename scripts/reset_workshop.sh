@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $(dirname $0)/workshop.sh
+source "$(dirname $0)/workshop.sh"
 
 USER=user
 PASS=WorkshopPassword
