@@ -19,7 +19,7 @@ create_user_htpasswd(){
 
     which htpasswd || return
 
-    for i in {00..20}
+    for i in {0..20}
     do
         htpasswd -bB ${FILE} "${USER}${i}" "${PASS}${i}"
     done
@@ -33,7 +33,7 @@ create_user_ns(){
     OBJ_DIR=${TMP_DIR}/users
     [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
 
-    for i in {00..20}
+    for i in {0..20}
     do
         # create ns
         oc -o yaml --dry-run=client \
@@ -119,7 +119,7 @@ clean_user_notebooks(){
 }
 
 clean_user_ns(){
-    for i in {00..20}
+    for i in {0..20}
     do
         oc delete project "${USER}${i}"
     done
