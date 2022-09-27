@@ -83,10 +83,10 @@ bootstrap_cluster(){
 setup_bin
 check_bin oc
 #check_bin kustomize
-check_bin kubeseal
+#check_bin kubeseal
 check_oc_login
 
 # bootstrap
-check_sealed_secret
+#check_sealed_secret
 install_gitops
 bootstrap_cluster
