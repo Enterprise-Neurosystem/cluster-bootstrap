@@ -1,4 +1,4 @@
-name: Manifests Validation
+name: Validate Manifests
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Validate Manifests
         run: |
-          touch bootstrap/base/sealed-secrets-secret.yaml
+          [ -d ./bootstrap/base ] && touch bootstrap/base/sealed-secrets-secret.yaml
           ./scripts/validate_manifests.sh
 
   lint-yaml:
@@ -44,11 +44,3 @@ jobs:
         with:
           version: v0.8.0
           severity: warning
-
-  lint-spelling:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Code Checkout
-        uses: actions/checkout@v2
-      - name: Spellcheck
-        uses: rojopolis/spellcheck-github-actions@0.27.0

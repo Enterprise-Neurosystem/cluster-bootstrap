@@ -64,6 +64,16 @@ Execute the following script:
 ./scripts/bootstrap.sh
 ```
 
+Additional RHODS setup
+```
+# run RHODS in an unsupported fashion = YES
+git clone https://github.com/redhat-na-ssa/hack-rhods
+cd hack-rhods
+
+# everything is going to be fine...
+hacks/run.sh
+```
+
 The `bootstrap.sh` script will install the OpenShift GitOps Operator, create an ArgoCD instance once the operator is deployed in the `openshift-gitops` namespace, and bootstrap a set of ArgoCD applications to configure the cluster.
 
 Once the script completes, verify that you can access the ArgoCD UI using the URL output by the last line of the script execution. This URL should present an ArgoCD login page, showing that it was successfully deployed.
