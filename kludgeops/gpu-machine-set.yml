@@ -1,0 +1,72 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  name: gpu-worker
+  namespace: openshift-machine-api
+  labels:
+    machine.openshift.io/cluster-api-cluster: gpu
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: gpu
+      machine.openshift.io/cluster-api-machineset: gpu-worker-us-east-2b
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: gpu
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: gpu-worker-us-east-2b
+    spec:
+      providerSpec:
+        value:
+          userDataSecret:
+            name: worker-user-data
+          placement:
+            availabilityZone: us-east-2b
+            region: us-east-2
+          credentialsSecret:
+            name: aws-cloud-credentials
+          instanceType: g3.4xlarge
+          metadata:
+          blockDevices:
+            - ebs:
+                encrypted: true
+                iops: 0
+                kmsKey:
+                  arn: ''
+                volumeSize: 120
+                volumeType: gp2
+          securityGroups:
+            - filters:
+                - name: 'tag:Name'
+                  values:
+                    - gpu-worker-sg
+          kind: AWSMachineProviderConfig
+          tags:
+            - name: kubernetes.io/cluster/gpu
+              value: owned
+            - name: guid
+              value: b24gr
+            - name: owner
+              value: unknown
+            - name: platform
+              value: RHPDS
+            - name: uuid
+              value: 491d3a6e-8d90-5749-9c62-e49e30ab67de
+            - name: Stack
+              value: project ocp4-cluster-b24gr
+            - name: env_type
+              value: ocp4-cluster
+          deviceIndex: 0
+          ami:
+            id: ami-02c627a4f7f3cef78
+          subnet:
+            filters:
+              - name: 'tag:Name'
+                values:
+                  - cluster-b24gr-8thkn-private-us-east-2b
+          apiVersion: awsproviderconfig.openshift.io/v1beta1
+          iamInstanceProfile:
+            id: cluster-b24gr-8thkn-worker-profile
