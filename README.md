@@ -62,6 +62,10 @@ Execute the following script:
 
 ```sh
 ./scripts/bootstrap.sh
+
+# setup workshop users
+# (optional)
+./scripts/setup_workshop.sh
 ```
 
 Additional RHODS setup
