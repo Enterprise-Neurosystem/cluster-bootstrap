@@ -12,3 +12,6 @@ resources:
   - sandbox-admins-rolebinding.yaml
   - self-provisioner-clusterrolebinding.yaml
   - workshop-attendees-group.yaml
+  - db-viewer-all-user-view-rolebinding.yaml
+  - kafka-anomaly-all-user-view-rolebinding.yaml
+  - edge-prediction-failure-all-user-view-rolebinding.yaml
