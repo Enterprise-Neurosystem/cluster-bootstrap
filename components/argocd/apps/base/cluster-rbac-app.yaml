@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: cluster-config
   source:
-    path: components/rbac/overlays/default
+    path: components/configs/rbac/overlays/default
     repoURL: https://github.com/Enterprise-Neurosystem/cluster-bootstrap.git
     targetRevision: main
   syncPolicy:
