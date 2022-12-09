@@ -21,6 +21,7 @@ patches:
         path: /users
         value:
           - codekow
+          - strangiato
     target:
       kind: Group
       name: gitops-admins
