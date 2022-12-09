@@ -13,4 +13,4 @@ rules:
   truthy:
     ignore: .github/workflows/
   trailing-spaces:
-    ignore: components/operators/openshift-gitops/instance/overlays/rhods/patch-resource-customizations.yaml
+    ignore: components/operators/openshift-gitops/instance/overlays/default/patch-resource-customizations.yaml
