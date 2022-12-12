@@ -54,3 +54,15 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: openshift-gitops
+      ## ignoring the difference in label   
+      ignoreDifferences:
+      - group: apps
+        kind: Namespace
+        jsonPointers:
+          - /metadata/labels/app.kubernetes.io/instance
+      ignoreDifferences:
+      - group: apps
+        kind: Subscription
+        jsonPointers:
+          - /metadata/labels/app.kubernetes.io/instance
+
