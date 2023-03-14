@@ -26,7 +26,7 @@ spec:
           url: https://kubernetes.default.svc
           values:
             name: rhods-operator
-            path: components/operators/rhods/operator/overlays/beta
+            path: components/operators/rhods-operator/operator/overlays/stable
         # - cluster: local
         #   url: https://kubernetes.default.svc
         #   values:
