@@ -13,6 +13,11 @@ spec:
         - cluster: local
           url: https://kubernetes.default.svc
           values:
+            name: acm-operator
+            path: components/operators/advanced-cluster-management/operator/overlays/release-2.7
+        - cluster: local
+          url: https://kubernetes.default.svc
+          values:
             name: strimzi-operator
             path: components/operators/strimzi/operator/overlays/stable
         # RHODS is tricky
