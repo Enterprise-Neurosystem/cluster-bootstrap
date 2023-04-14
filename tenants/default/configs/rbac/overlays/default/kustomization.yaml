@@ -3,30 +3,5 @@ kind: Kustomization
 
 resources:
   - ../../base
-
-
-patches:
-  - target:
-      group: machineconfiguration.openshift.io
-      version: v1
-      kind: MachineConfig
-      name: 99-master-ssh
-    path: patch-ssh.yaml
-  - target:
-      group: machineconfiguration.openshift.io
-      version: v1
-      kind: MachineConfig
-      name: 99-worker-ssh
-    path: patch-ssh.yaml
-  - target:
-      group: user.openshift.io
-      version: v1
-      kind: Group
-      name: cluster-admins
-    path: patch-cluster-admins-group.yaml
-  - target:
-      group: user.openshift.io
-      version: v1
-      kind: Group
-      name: cluster-readers
-    path: patch-cluster-readers-group.yaml
+  - acm-admins-rolebinding.yaml
+  - acm-admins-group.yaml
