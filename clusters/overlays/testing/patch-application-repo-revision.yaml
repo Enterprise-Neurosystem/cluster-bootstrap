@@ -3,4 +3,4 @@
   value: 'https://github.com/Enterprise-Neurosystem/cluster-bootstrap.git'
 - op: replace
   path: /spec/source/targetRevision
-  value: main
+  value: testing
