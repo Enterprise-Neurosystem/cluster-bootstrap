@@ -5,5 +5,4 @@ namespace: redhat-ods-operator
 
 resources:
   - redhat-ods-operator-namespace.yaml
-  - redhat-ods-operator-operatorgroup.yaml
   - rhods-operator-subscription.yaml
