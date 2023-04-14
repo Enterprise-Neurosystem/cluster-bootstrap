@@ -5,19 +5,31 @@
         fileData:
           name: htpasswd-secret
       mappingMethod: claim
-      name: htpasswd_provider
+      name: Internal
+      type: HTPasswd
+- op: add
+  path: /spec/identityProviders
+  value:
+    - htpasswd:
+        fileData:
+          name: htpasswd-workshop-secret
+      mappingMethod: claim
+      name: Workshop-Users
       type: HTPasswd
 - op: add
   path: /spec/identityProviders/-
   value:
     github:
-      clientID: 2ac4af8a641091b2f05a
+      ca:
+        name: ''
+      clientID: 49d67e48e7ae82b0e9ce
       clientSecret:
-        name: github-client-secret
-      organizations:
-        - redhat-na-ssa
+        name: github-secret
+      hostname: ''
+      teams:
+        - Enterprise-Neurosystem/Edge
     mappingMethod: claim
-    name: GitHub
+    name: Enterprise-Neurosystem
     type: GitHub
 - op: add
   path: /spec/templates
