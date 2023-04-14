@@ -31,12 +31,12 @@
     mappingMethod: claim
     name: Enterprise-Neurosystem
     type: GitHub
-- op: add
-  path: /spec/templates
-  value:
-    # error:
-    #   name: login-custom
-    login:
-      name: login-custom
-    # providerSelection:
-    #   name: login-custom
+# - op: add
+#   path: /spec/templates
+#   value:
+#     # error:
+#     #   name: login-custom
+#     login:
+#       name: login-custom
+#     # providerSelection:
+#     #   name: login-custom
