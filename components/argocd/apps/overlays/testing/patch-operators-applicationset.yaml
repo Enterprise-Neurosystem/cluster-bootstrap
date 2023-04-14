@@ -1,6 +1,11 @@
 - op: add
   path: /spec/generators/0/list/elements
   value:
+    - cluster: local
+      url: https://kubernetes.default.svc
+      values:
+        name: operator-acm
+        path: components/operators/advanced-cluster-management/operator/overlays/release-2.7
     # - cluster: local
     #   url: https://kubernetes.default.svc
     #   values:
