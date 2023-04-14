@@ -3,8 +3,8 @@ manifest.yaml
 venv/
 dictionary.dic
 tmp
-
-generated
+generated/
+scratch/
 
 # Sealed secret key
 bootstrap/base/sealed-secrets-secret.yaml
