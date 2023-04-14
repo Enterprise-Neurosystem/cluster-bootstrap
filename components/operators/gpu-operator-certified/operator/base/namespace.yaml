@@ -5,4 +5,4 @@ metadata:
     openshift.io/display-name: "NVIDIA GPU Operator"
   labels:
     openshift.io/cluster-monitoring: 'true'
-  name: gpu-operator-certified
+  name: nvidia-gpu-operator
