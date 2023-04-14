@@ -8,14 +8,14 @@
       name: Internal
       type: HTPasswd
 - op: add
-  path: /spec/identityProviders
+  path: /spec/identityProviders/-
   value:
-    - htpasswd:
-        fileData:
-          name: htpasswd-workshop-secret
-      mappingMethod: claim
-      name: Workshop-Users
-      type: HTPasswd
+    htpasswd:
+      fileData:
+        name: htpasswd-workshop-secret
+    mappingMethod: claim
+    name: Workshop-Users
+    type: HTPasswd
 - op: add
   path: /spec/identityProviders/-
   value:
