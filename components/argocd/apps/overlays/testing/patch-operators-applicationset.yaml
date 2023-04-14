@@ -24,7 +24,7 @@
     - cluster: local
       url: https://kubernetes.default.svc
       values:
-        name: operator-gpu
+        name: operator-quay
         path: components/operators/quay-operator/operator/overlays/stable-3.8
     - cluster: local
       url: https://kubernetes.default.svc
