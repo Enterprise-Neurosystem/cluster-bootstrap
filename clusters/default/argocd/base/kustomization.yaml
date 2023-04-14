@@ -7,6 +7,7 @@ bases:
   - ../../../../components/configs/argocd/apps/overlays/default
   - ../../../../components/configs/argocd/applicationsets/overlays/default
   - ../../../../components/configs/argocd/projects/overlays/default
+  - ../../../../components/configs/console/overlays/default
   - ../../../../tenants/edge-anomaly-detection/argocd/applicationsets/overlays/default
   - ../../../../tenants/edge-anomaly-detection/argocd/projects/overlays/default
 
