@@ -2,13 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - db-viewer-admins-rolebinding.yaml
   - edge-anomaly-detection-admins-rolebinding.yaml
   - edge-anomaly-detection-cluster-reader-clusterrolebinding.yaml
   - edge-anomaly-detection-gitops-admins-rolebinding.yaml
-  - edge-demo-anomaly-detection-admins-rolebinding.yaml
   - kafka-anomaly-admins-rolebinding.yaml
   - project-admin-group.yaml
-  - sandbox-admins-rolebinding.yaml
-  - self-provisioner-clusterrolebinding.yaml
   - workshop-attendees-group.yaml

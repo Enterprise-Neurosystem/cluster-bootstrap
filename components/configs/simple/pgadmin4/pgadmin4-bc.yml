@@ -24,3 +24,6 @@ spec:
     to:
       kind: ImageStreamTag
       name: pgadmin4:patch
+  triggers:
+    - type: ImageChange
+    - type: ConfigChange

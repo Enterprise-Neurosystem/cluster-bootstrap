@@ -13,6 +13,5 @@ spec:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
   to:
-    kind: ""
+    kind: Service
     name: pgadmin4
-    weight: null
