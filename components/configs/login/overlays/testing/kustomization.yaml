@@ -10,9 +10,9 @@ commonAnnotations:
 resources:
   - ../../base
   - github-secret-ss.yaml
+  - htpasswd-fix-user-job.yaml
   - htpasswd-secret-ss-job.yaml
   - htpasswd-secret-ss.yaml
-  - htpasswd-user-fix-job.yaml
   - htpasswd-workshop-secret-ss.yaml
   # - login-custom-secret.yaml
   # - v4-0-config-user-template-login.yaml
