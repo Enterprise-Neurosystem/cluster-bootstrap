@@ -31,7 +31,7 @@
     #     name: config-demo-rhods
     #     namespace: openshift-gitops
     #     path: components/demos/overlays/rhods
-    # - cluster: local
+    - cluster: local
       url: https://kubernetes.default.svc
       values:
         name: config-sandbox-cleanup
