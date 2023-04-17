@@ -5,4 +5,4 @@ resources:
 - banner-data.yaml
 - banner-top.yaml
 - link-github.yaml
-- link-quay.yaml
+# - link-quay.yaml
