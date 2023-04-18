@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../instance/default
-  - ../../instance/sandbox
+  # - ../../instance/sandbox
 
 # patches:
 #   - target:
