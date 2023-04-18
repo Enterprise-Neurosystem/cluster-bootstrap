@@ -19,6 +19,8 @@ ${KUBECTL} patch klusterlet klusterlet --type="json" -p '[{"op": "remove", "path
 echo "removing klusterlet crd"
 ${KUBECTL} delete crd klusterlets.operator.open-cluster-management.io --timeout=30s
 
+# managedclustermutators.admission.cluster.open-cluster-management.io
+
 # force delete all validating webhook configuration
 # oc get validatingwebhookconfigurations -o name | egrep 'cluster-management.io|multicluster'
 component_vwc=(
@@ -56,6 +58,7 @@ component_crds=(
   placementbindings.policy.open-cluster-management.io
   placementrules.apps.open-cluster-management.io
   policies.policy.open-cluster-management.io
+  searches.search.open-cluster-management.io
   searchcustomizations.search.open-cluster-management.io
   searchoperators.search.open-cluster-management.io
   submarinerconfigs.submarineraddon.open-cluster-management.io
