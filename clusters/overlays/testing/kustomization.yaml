@@ -6,7 +6,7 @@ resources:
   - ../../../components/argocd/apps/overlays/testing
   # - ../../../tenants/edge-anomaly-detection/argocd/applicationsets/overlays/default
   # - ../../../tenants/edge-anomaly-detection/argocd/apps/kafka/overlays/default
-  # - ../../../tenants/edge-anomaly-detection/argocd/apps/misc
+  - ../../../tenants/edge-anomaly-detection/argocd/apps/misc
 
 patches:
   - path: patch-applicationset-repo-revision.yaml
