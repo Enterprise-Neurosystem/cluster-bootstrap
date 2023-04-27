@@ -5,6 +5,7 @@ resources:
   - ../../base
   - ../../../components/argocd/apps/overlays/testing
   - ../../../tenants/edge-anomaly-detection/argocd/applicationsets/overlays/default
+  - ../../../tenants/edge-anomaly-detection/argocd/apps/kafka/overlays/default
   - ../../../tenants/edge-anomaly-detection/argocd/apps/misc
 
 patches:
