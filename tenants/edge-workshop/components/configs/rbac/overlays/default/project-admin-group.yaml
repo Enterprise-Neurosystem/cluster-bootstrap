@@ -1,0 +1,13 @@
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: edge-anomaly-detection-admins
+users:
+  - codekow
+  - adrezni
+  - TroyNelson11
+  - hemajv
+  - mariashev
+  - strangiato
+  - sabre1041
+  - cam-garrison
