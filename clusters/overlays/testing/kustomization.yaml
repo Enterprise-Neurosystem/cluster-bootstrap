@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
-  - ../../../components/argocd/apps/overlays/testing
+  - ../../../components/argocd/apps/overlays/default
   - ../../../tenants/edge-workshop/argocd/appsets/overlays/default
   - ../../../tenants/edge-workshop/argocd/projects/overlays/default
 
