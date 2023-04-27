@@ -3,3 +3,6 @@ kind: Kustomization
 
 bases:
   - ../../base
+  # - app-airflow.yaml
+  - app-kafdrop.yaml
+  - app-pgadmin4.yaml
