@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: kafka-anomaly
     server: 'https://kubernetes.default.svc'
-  project: edge-anomaly-detection-tenant
+  project: edge-workshop-tenant 
   source:
     helm:
       parameters:
