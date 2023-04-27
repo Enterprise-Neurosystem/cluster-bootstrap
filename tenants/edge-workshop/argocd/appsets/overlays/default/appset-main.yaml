@@ -23,7 +23,7 @@ spec:
           url: https://kubernetes.default.svc
           values:
             name: edge-workshop-namespaces
-            path: tenants/edge-workshop/components/namespaces/overlays/default
+            path: tenants/edge-workshop/components/namespaces/aggregate/default
         - cluster: local
           url: https://kubernetes.default.svc
           values:

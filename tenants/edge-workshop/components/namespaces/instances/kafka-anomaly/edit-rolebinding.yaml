@@ -1,8 +1,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: edge-demo-anomaly-detection-edit-rolebinding
-  namespace: edge-demo-anomaly-detection
+  name: kafka-anomaly-edit-rolebinding
+  namespace: kafka-anomaly
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
