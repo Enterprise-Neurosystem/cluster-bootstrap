@@ -1,10 +1,29 @@
 #!/bin/bash
 
-USER=user
-PASS=ThisIsFine
+USER=${USER:-user}
+PASS=${PASS:-ThisIsFine}
 GROUP=workshop-users
 HTPASSWD=htpasswd-workshop-secret
 TMP_DIR=scratch
+
+usage(){
+  echo "Workshop: Functions Loaded"
+  echo ""
+  echo "usage: workshop_[setup,reset,clean]"
+}
+
+doing_it_wrong(){
+  echo "usage: source scripts/workshop-functions.sh"
+}
+
+is_sourced() {
+  if [ -n "$ZSH_VERSION" ]; then
+      case $ZSH_EVAL_CONTEXT in *:file:*) return 0;; esac
+  else  # Add additional POSIX-compatible shell names here, if needed.
+      case ${0##*/} in dash|-dash|bash|-bash|ksh|-ksh|sh|-sh) return 0;; esac
+  fi
+  return 1  # NOT sourced.
+}
 
 check_init(){
   # do you have oc
@@ -92,6 +111,5 @@ workshop_reset(){
   workshop_setup
 }
 
-echo "Workshop: Functions Loaded"
-echo ""
-echo "usage: workshop_[setup,reset,clean]"
+is_sourced && usage
+is_sourced || doing_it_wrong
