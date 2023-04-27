@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../default
+  - ../../base
   - edge-anomaly-detection-admins-rolebinding.yaml
   - edge-anomaly-detection-cluster-reader-clusterrolebinding.yaml
   - edge-anomaly-detection-gitops-admins-rolebinding.yaml
