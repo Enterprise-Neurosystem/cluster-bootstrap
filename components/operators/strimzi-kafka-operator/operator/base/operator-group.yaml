@@ -3,6 +3,4 @@ kind: OperatorGroup
 metadata:
   name: strimzi-kafka-operator-group
   namespace: strimzi-kafka-operator
-spec:
-  targetNamespaces:
-    - strimzi-kafka-operator
+spec: {}
