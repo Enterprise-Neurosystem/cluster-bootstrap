@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: kafka-anomaly
     server: 'https://kubernetes.default.svc'
-  project: edge-workshop-tenant 
+  project: edge-workshop-tenant
   source:
     helm:
       parameters:
@@ -21,4 +21,4 @@ spec:
           value: '-Xms32M -Xmx64M'
     path: chart
     repoURL: 'https://github.com/obsidiandynamics/kafdrop.git'
-    targetRevision: HEAD
+    targetRevision: 3.31.0
