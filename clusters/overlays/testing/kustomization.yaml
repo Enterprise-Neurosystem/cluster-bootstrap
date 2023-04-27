@@ -5,6 +5,7 @@ resources:
   - ../../base
   - ../../../components/argocd/apps/overlays/testing
   - ../../../tenants/edge-workshop/argocd/appsets/overlays/default
+  - ../../../tenants/edge-workshop/argocd/projects/overlays/default
 
 patches:
   - path: patch-applicationset-repo-revision.yaml
