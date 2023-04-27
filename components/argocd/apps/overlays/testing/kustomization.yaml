@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
   - ../default
   - app-pgadmin4.yaml
-  - ../../../tenants/edge-anomaly-detection/argocd/applicationsets/overlays/default
-  - ../../../tenants/edge-anomaly-detection/argocd/apps/overlays/default
+  - ../../../../tenants/edge-anomaly-detection/argocd/applicationsets/overlays/default
+  - ../../../../tenants/edge-anomaly-detection/argocd/apps/overlays/default
   # - cluster-automation-applicationset.yaml
 
 patches:
