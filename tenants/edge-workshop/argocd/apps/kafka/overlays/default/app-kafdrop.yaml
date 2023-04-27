@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: edge-anomaly-detection-kafdrop
+  name: edge-workshop-kafdrop
 spec:
   syncPolicy:
     automated:
