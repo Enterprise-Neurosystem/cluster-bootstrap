@@ -59,7 +59,7 @@ workshop_create_user_ns(){
     # create ns
     oc -o yaml --dry-run=client \
       create ns "${W_USER}${i}" > "${OBJ_DIR}/${W_USER}${i}-ns.yml"
-    oc apply -f ${OBJ_DIR}
+    oc apply -f "${OBJ_DIR}/${W_USER}${i}-ns.yml"
 
     # create role binding - admin for user
     oc -o yaml --dry-run=client \

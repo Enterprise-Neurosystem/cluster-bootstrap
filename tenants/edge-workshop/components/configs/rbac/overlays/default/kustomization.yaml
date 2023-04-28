@@ -5,4 +5,4 @@ resources:
   - ../../base
   - workshop-cluster-reader-clusterrolebinding.yaml
   - workshop-admin-group.yaml
-  - workshop-attendees-group.yaml
+  - workshop-users-group.yaml
