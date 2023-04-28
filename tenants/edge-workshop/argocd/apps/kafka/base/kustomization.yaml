@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: kafka-anomaly
+namespace: edge-kafka
 
 resources:
-  - kafdrop-route.yaml
-  - kafka-anomaly-cluster-config.yaml
+  - kafka-cluster-route.yaml
+  - kafka-cluster-config.yaml
