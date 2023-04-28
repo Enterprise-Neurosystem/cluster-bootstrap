@@ -3,9 +3,9 @@ kind: ConsoleLink
 metadata:
   name: github
 spec:
-  href: 'https://github.com/redhat-na-ssa'
+  href: 'https://github.com/Enterprise-Neurosystem/cluster-bootstrap'
   location: ApplicationMenu
-  text: GitHub - NA SSA
+  text: GitHub - GitOps
   applicationMenu:
     section: Tools
     imageURL: https://img.icons8.com/fluency/512/github.png

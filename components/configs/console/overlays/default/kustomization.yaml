@@ -11,4 +11,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/text
-        value: 'This cluster is in process of being retired - Contact Audrey Guidera for more info'
+        value: 'Welcome to the anomaly detection demo'
