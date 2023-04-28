@@ -3,6 +3,6 @@ kind: Kustomization
 
 bases:
   - ../../instances/db-viewer
-  # - ../../instances/edge-anomaly-detection
-  # - ../../instances/edge-demo-anomaly-detection
-  # - ../../instances/kafka-anomaly
+  - ../../instances/edge-anomaly-detection
+  - ../../instances/edge-demo-anomaly-detection
+  - ../../instances/kafka-anomaly
