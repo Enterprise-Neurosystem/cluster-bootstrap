@@ -5,4 +5,5 @@ bases:
   - ../../instances/db-viewer
   - ../../instances/edge-anomaly-detection
   - ../../instances/edge-demo-anomaly-detection
+  - ../../instances/edge-prediction-failure
   - ../../instances/kafka-anomaly
