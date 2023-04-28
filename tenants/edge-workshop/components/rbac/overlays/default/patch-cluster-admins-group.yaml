@@ -1,4 +1,0 @@
-- op: replace
-  path: /users
-  value:
-    - opentlc-mgr
