@@ -2,7 +2,8 @@
 
 W_USER=${W_USER:-user}
 W_PASS=${W_PASS:-ThisIsFine}
-GROUP=workshop-users
+GROUP_ADMINS=workshop-admins
+GROUP_USERS=workshop-users
 HTPASSWD=htpasswd-workshop-secret
 TMP_DIR=scratch
 
@@ -65,6 +66,7 @@ workshop_create_user_ns(){
     oc -o yaml --dry-run=client \
       -n "${W_USER}${i}" \
       create rolebinding "${W_USER}${i}-admin" \
+      --group "${GROUP_ADMINS}" \
       --user "${W_USER}${i}" \
       --clusterrole admin > "${OBJ_DIR}/${W_USER}${i}-ns-admin-rb.yml"
 
@@ -72,7 +74,7 @@ workshop_create_user_ns(){
     oc -o yaml --dry-run=client \
       -n "${W_USER}${i}" \
       create rolebinding "${W_USER}${i}-view" \
-      --group ${GROUP} \
+      --group "${GROUP_USERS}" \
       --clusterrole view > "${OBJ_DIR}/${W_USER}${i}-rb-ns-view.yml"
   done
 
