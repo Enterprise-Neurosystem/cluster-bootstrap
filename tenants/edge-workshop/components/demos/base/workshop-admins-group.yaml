@@ -3,9 +3,11 @@ apiVersion: user.openshift.io/v1
 metadata:
   name: workshop-admins
 users:
-  - bkozdemb
-  - clatschk
+  - adrezni
   - codekow
-  - davwhite
-  - dmarcus
-  - troyer
+  - TroyNelson11
+  - hemajv
+  - mariashev
+  - strangiato
+  - sabre1041
+  - cam-garrison

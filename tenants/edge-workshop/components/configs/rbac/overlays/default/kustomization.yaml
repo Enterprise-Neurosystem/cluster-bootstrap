@@ -4,5 +4,3 @@ kind: Kustomization
 resources:
   - ../../base
   - workshop-cluster-reader-clusterrolebinding.yaml
-  - workshop-admins-group.yaml
-  - workshop-users-group.yaml
