@@ -1,4 +1,4 @@
 - op: add
   path: /users
-  value: null
+  value: []
   #   - opentlc-mgr
