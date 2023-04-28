@@ -6,5 +6,5 @@ resources:
   - edge-anomaly-detection-admins-rolebinding.yaml
   - edge-anomaly-detection-cluster-reader-clusterrolebinding.yaml
   - kafka-anomaly-admins-rolebinding.yaml
-  - project-admin-group.yaml
+  - workshop-admin-group.yaml
   - workshop-attendees-group.yaml
