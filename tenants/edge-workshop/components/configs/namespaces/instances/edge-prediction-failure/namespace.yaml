@@ -4,4 +4,4 @@ metadata:
   annotations:
     openshift.io/description: Workshop Namespace
     openshift.io/display-name: Workshop Namespace
-  name: edge-anomaly-detection
+  name: edge-prediction-failure
