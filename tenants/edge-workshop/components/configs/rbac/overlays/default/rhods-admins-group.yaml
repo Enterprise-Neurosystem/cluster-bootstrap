@@ -1,13 +1,14 @@
 kind: Group
 apiVersion: user.openshift.io/v1
 metadata:
-  name: workshop-admins
+  name: rhods-admins
 users:
-  - codekow
   - adrezni
+  - codekow
   - TroyNelson11
   - hemajv
   - mariashev
   - strangiato
   - sabre1041
   - cam-garrison
+
