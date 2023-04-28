@@ -1,4 +1,4 @@
-- op: remove
+- op: add
   path: /users
-  # value:
+  value: null
   #   - opentlc-mgr
