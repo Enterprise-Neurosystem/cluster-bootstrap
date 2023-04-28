@@ -11,4 +11,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/text
-        value: 'Welcome to the World of <Default Overlay>'
+        value: 'Welcome to the anomaly detection demo'
