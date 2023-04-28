@@ -37,6 +37,11 @@ spec:
         - cluster: local
           url: https://kubernetes.default.svc
           values:
+            name: edge-workshop-rhods-custom-notebooks
+            path: tenants/edge-workshop/components/demos/custom-notebooks
+        - cluster: local
+          url: https://kubernetes.default.svc
+          values:
             name: edge-workshop-rhods-projects
             path: tenants/edge-workshop/components/demos/instance/rhods-projects
   template:
