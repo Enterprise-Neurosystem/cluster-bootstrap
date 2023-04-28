@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: edge-robotics-edit-rolebinding
+  name: edge-robotics-edit
   namespace: edge-robotics
 roleRef:
   apiGroup: rbac.authorization.k8s.io
