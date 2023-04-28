@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ../../instances/edge-anomaly-detection
   - ../../instances/edge-failure-prediction
+  - ../../instances/edge-synthetic-data-generator
