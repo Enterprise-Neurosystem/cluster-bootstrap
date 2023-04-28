@@ -3,8 +3,6 @@ kind: Kustomization
 
 resources:
   - ../../base
-  - edge-anomaly-detection-admins-rolebinding.yaml
-  - edge-anomaly-detection-cluster-reader-clusterrolebinding.yaml
-  - kafka-anomaly-admins-rolebinding.yaml
+  - workshop-cluster-reader-clusterrolebinding.yaml
   - workshop-admin-group.yaml
   - workshop-attendees-group.yaml
