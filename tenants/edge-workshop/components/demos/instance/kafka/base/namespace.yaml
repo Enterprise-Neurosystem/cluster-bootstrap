@@ -3,5 +3,5 @@ kind: Namespace
 metadata:
   annotations:
     openshift.io/description: Kafka Instance
-    openshift.io/display-name: Kafka
+    openshift.io/display-name: Edge Kafka
   name: edge-kafka
