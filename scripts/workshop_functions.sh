@@ -109,6 +109,7 @@ workshop_reset(){
   echo "Workshop: Reset"
   check_init
   workshop_clean
+  sleep 8
   workshop_setup
 }
 
