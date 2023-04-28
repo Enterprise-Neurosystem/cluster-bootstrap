@@ -5,7 +5,7 @@ metadata:
 subjects:
   - kind: Group
     apiGroup: rbac.authorization.k8s.io
-    name: edge-anomaly-detection-admins
+    name: workshop-admins
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
