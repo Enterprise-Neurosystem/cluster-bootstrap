@@ -51,7 +51,7 @@ workshop_create_user_htpasswd(){
 
 workshop_create_user_ns(){
   OBJ_DIR=${TMP_DIR}/users
-  [ -e ${OBJ_DIR} ] && rmdir -rf ${OBJ_DIR}
+  [ -e ${OBJ_DIR} ] && rm -rf ${OBJ_DIR}
   [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
 
   for i in {0..20}
