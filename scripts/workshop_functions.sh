@@ -6,6 +6,7 @@ GROUP_ADMINS=workshop-admins
 GROUP_USERS=workshop-users
 HTPASSWD=htpasswd-workshop-secret
 TMP_DIR=scratch
+WORKSHOP_USERS=25
 
 usage(){
   echo "Workshop: Functions Loaded"
