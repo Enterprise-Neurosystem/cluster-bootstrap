@@ -4,4 +4,4 @@ metadata:
   annotations:
     openshift.io/description: Edge Workshop Namespace
     openshift.io/display-name: Edge Workshop
-  name: edge-prediction-failure
+  name: edge-failure-prediction
