@@ -1,4 +1,4 @@
-- op: delete
+- op: remove
   path: /users
   # value:
   #   - opentlc-mgr
