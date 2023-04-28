@@ -37,7 +37,7 @@ scripts/bootstrap.sh
 ```
 # setup workshop
 # (optional)
-. scripts/setup_workshop.sh
+. scripts/workshop_functions.sh
 ```
 
 The `bootstrap.sh` script will:

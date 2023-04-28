@@ -1,4 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
+  annotations:
+    openshift.io/description: Workshop Namespace
+    openshift.io/display-name: Workshop Namespace
   name: edge-demo-anomaly-detection
