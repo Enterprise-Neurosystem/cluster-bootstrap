@@ -2,6 +2,6 @@ apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    openshift.io/description: Edge Workshop Namespace
-    openshift.io/display-name: Edge Workshop
+    openshift.io/description: Edge Prediction Workshop Namespace
+    openshift.io/display-name: Edge Prediction Workshop
   name: edge-failure-prediction
