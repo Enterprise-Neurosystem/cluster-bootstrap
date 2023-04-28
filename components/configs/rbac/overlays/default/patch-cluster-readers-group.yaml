@@ -1,6 +1,6 @@
 - op: replace
   path: /users
   value:
-    - adrezni
-    - codekow
-    - strangiato
+    # - adrezni
+    # - codekow
+    # - strangiato
