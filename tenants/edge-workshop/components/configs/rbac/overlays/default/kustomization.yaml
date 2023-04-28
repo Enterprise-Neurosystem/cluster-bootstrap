@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
-  - rhods-admins.yaml
+  - rhods-admins-group.yaml
   - workshop-cluster-reader-clusterrolebinding.yaml
   - workshop-admins-group.yaml
   - workshop-users-group.yaml
