@@ -9,6 +9,13 @@ This repo is subject to frequent breaking changes while we all learn patterns to
 
 ## Prerequisites
 
+OpenShift 4.10+ with `cluster-admin`.
+
+This has been tested with the [Red Hat Demo Platform](https://demo.redhat.com) using the following selection:
+
+- `Red Hat OpenShift Container Platform 4 Demo`
+- `OpenShift Version`: 4.10 (or greater)
+
 ### Client
 
 In order to bootstrap this repository you must have the following cli tools:
@@ -35,8 +42,7 @@ scripts/bootstrap.sh
 ```
 
 ```
-# setup workshop
-# (optional)
+# setup workshop (optional)
 . scripts/workshop_functions.sh
 ```
 
@@ -46,10 +52,13 @@ The `bootstrap.sh` script will:
 - Create an ArgoCD instance in the `openshift-gitops` namespace
 - Bootstrap a set of ArgoCD applications to configure the cluster
 
-You can run individual [functions](scripts/functions.sh) in a bash shell:
+You can run also run individual [functions.sh](scripts/functions.sh) in a bash shell:
 
 ```sh
-source scripts/functions
+source scripts/functions.sh
+
+# ex: save some money by doing more with less
+ocp_save_money
 ```
 
 ### Sealed Secrets Bootstrap

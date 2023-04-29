@@ -1,12 +1,12 @@
 #!/bin/sh
 
 upload_files(){
-  oc cp db.sql edge-db-0:/tmp
-  oc cp sensor.csv.zip edge-db-0:/tmp
+  oc -n edge-db cp db.sql edge-db-0:/tmp
+  oc -n edge-db cp sensor.csv.zip edge-db-0:/tmp
 }
 
 setup_db(){
-cat << EOL | oc exec edge-db-0 -- sh -c "$(cat -)"
+cat << EOL | oc -n edge-db exec edge-db-0 -- sh -c "$(cat -)"
 cd /tmp
 
 # curl url.zip > sensor.csv.zip
