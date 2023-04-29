@@ -102,8 +102,10 @@ clusterrolebinding
 config
 configmap
 configs
+cp
 cr
 creds
+csv
 datasource
 deployable
 dev
@@ -154,6 +156,7 @@ ldap
 letsencrypt
 libvirt
 linux
+localhost
 machineset
 mastersSchedulable
 na
@@ -189,6 +192,7 @@ repo
 rhdp
 rhods
 rhpds
+rsh
 runtime
 sagemaker
 sandboxed
@@ -201,6 +205,7 @@ serverless
 serviceaccount
 servicemesh
 sfdc
+sql
 ss
 ssa
 strimzi
@@ -209,6 +214,7 @@ sublicense
 tekton
 templating
 thanos
+tmp
 useable
 vSphere
 vsphere
