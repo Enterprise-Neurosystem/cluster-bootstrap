@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS waterpump;
 CREATE TABLE waterpump 
     (id serial NOT NULL PRIMARY KEY,
-    timestamp DATE, 
+    timestamp TIMESTAMP, 
     sensor_00 DOUBLE PRECISION,
     sensor_01 DOUBLE PRECISION,
     sensor_02 DOUBLE PRECISION,
@@ -60,5 +60,8 @@ CREATE TABLE waterpump
 GRANT ALL ON TABLE public.waterpump TO "edge-db";
 
 COPY waterpump
-FROM '/tmp/sensor.csv'
+    FROM '/tmp/sensor.csv'
     WITH CSV HEADER DELIMITER ',' ;
+
+ALTER TABLE waterpump
+    DROP COLUMN id ;
