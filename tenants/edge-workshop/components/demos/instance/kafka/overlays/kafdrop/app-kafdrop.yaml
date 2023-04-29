@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: edge-workshop-kafdrop
+  name: demo-kafdrop
 spec:
   syncPolicy:
     automated:

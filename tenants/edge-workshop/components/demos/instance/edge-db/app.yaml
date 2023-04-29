@@ -1,0 +1,124 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    demo: edge-db
+  name: edge-db
+spec:
+  serviceName: edge-db
+  replicas: 1
+  selector:
+    matchLabels:
+      name: edge-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: edge-db
+    spec:
+      containers:
+      - env:
+        - name: POSTGRESQL_USER
+          valueFrom:
+            secretKeyRef:
+              key: database-user
+              name: edge-db
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: database-password
+              name: edge-db
+        - name: POSTGRESQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              key: database-name
+              name: edge-db
+        image: image-registry.openshift-image-registry.svc:5000/openshift/postgresql:12-el8
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+            - /usr/libexec/check-container
+            - --live
+          failureThreshold: 3
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
+        name: postgresql
+        ports:
+        - containerPort: 5432
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - /usr/libexec/check-container
+          failureThreshold: 3
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            memory: 512Mi
+        volumeMounts:
+        - mountPath: /var/lib/pgsql/data
+          name: edge-db-data
+      volumes:
+      - emptyDir: {}
+        name: empty
+      - name: edge-db-data
+        persistentVolumeClaim:
+          claimName: edge-db
+  triggers:
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - postgresql
+      from:
+        kind: ImageStreamTag
+        name: postgresql:12-el8
+        namespace: openshift
+    type: ImageChange
+  - type: ConfigChange
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    demo: edge-db
+  name: edge-db
+spec:
+  ports:
+  - name: postgresql
+    port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    name: edge-db
+---
+apiVersion: v1
+stringData:
+  database-name: edge-db
+  database-password: failure
+  database-user: edge-db
+kind: Secret
+metadata:
+  labels:
+    demo: edge-db
+  name: edge-db
+type: Opaque
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: edge-db
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi

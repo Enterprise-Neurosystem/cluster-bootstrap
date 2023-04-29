@@ -3,6 +3,4 @@ kind: Kustomization
 
 resources:
   - ../../base
-  - ../../../components/operators/openshift-gitops-operator/instance/overlays/default
-  - ../../../components/configs/namespaces/base
   - ../../../clusters/overlays/default

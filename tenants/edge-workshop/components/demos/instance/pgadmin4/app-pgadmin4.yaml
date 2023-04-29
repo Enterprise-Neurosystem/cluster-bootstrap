@@ -7,9 +7,9 @@ spec:
   destination:
     namespace: pgadmin4
     server: https://kubernetes.default.svc
-  project: cluster-config
+  project: edge-workshop-tenant
   source:
-    path: components/configs/simple/pgadmin4
+    path: tenants/edge-workshop/components/configs/simple/pgadmin4
     repoURL: https://github.com/Enterprise-Neurosystem/cluster-bootstrap.git
     targetRevision: main
   syncPolicy:
