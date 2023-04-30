@@ -284,6 +284,10 @@ ocp_control_as_workers(){
   oc patch schedulers.config.openshift.io/cluster --type merge --patch '{"spec":{"mastersSchedulable": true}}'
 }
 
+ocp_control_dedicated(){
+  oc patch schedulers.config.openshift.io/cluster --type merge --patch '{"spec":{"mastersSchedulable": false}}'
+}
+
 # save money in aws
 ocp_save_money(){
   # run work on masters
