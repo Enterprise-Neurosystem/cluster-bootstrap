@@ -83,6 +83,8 @@ The `sandbox` [namespace](components/configs/namespaces/instance/sandbox/sandbox
 
 ## Additional Info
 
+- [Fix GitHub Login - Update Oauth Callback](docs/LOGIN.md)
+
 ## External Links
 
 - [ArgoCD - Example](https://github.com/gnunn-gitops/cluster-config)
