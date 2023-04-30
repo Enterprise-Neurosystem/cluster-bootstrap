@@ -46,8 +46,9 @@ workshop_create_user_htpasswd(){
     htpasswd -bB ${FILE} "${W_USER}${i}" "${W_PASS}${i}"
   done
 
-  oc -n openshift-config create secret generic ${HTPASSWD} --from-file=${FILE}
-  oc -n openshift-config set data secret/${HTPASSWD} --from-file=${FILE}
+  echo "created: ${FILE}" 
+  # oc -n openshift-config create secret generic ${HTPASSWD} --from-file=${FILE}
+  # oc -n openshift-config set data secret/${HTPASSWD} --from-file=${FILE}
 
 }
 
