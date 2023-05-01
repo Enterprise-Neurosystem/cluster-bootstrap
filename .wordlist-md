@@ -2,6 +2,7 @@
 ACK
 ACM
 ACS
+AIML
 APIs
 Ansible
 ArgoCD
@@ -79,6 +80,7 @@ UI
 Workspaces
 ack
 adm
+agnosticv
 alongsecret
 amq
 api
@@ -91,6 +93,7 @@ autoscaler
 aws
 backplane
 bitnami
+bookbag
 canada
 cd
 ceph
@@ -110,6 +113,7 @@ csv
 datasource
 deployable
 dev
+devopsautomation
 devspaces
 devworkspace
 devworkspaces
@@ -128,6 +132,7 @@ gitopsadmins
 gmail
 godmode
 gp
+gpte
 grafana
 homelab
 html
