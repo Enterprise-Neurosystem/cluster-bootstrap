@@ -4,8 +4,8 @@ W_USER=${W_USER:-user}
 W_PASS=${W_PASS:-ThisIsFine}
 GROUP_ADMINS=workshop-admins
 GROUP_USERS=workshop-users
-HTPASSWD=htpasswd-workshop-secret
 TMP_DIR=scratch
+# HTPASSWD=htpasswd-workshop-secret
 # WORKSHOP_USERS=25
 
 usage(){
