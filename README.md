@@ -1,7 +1,7 @@
 # Cluster Bootstrap
 
 [![Spelling](https://github.com/Enterprise-Neurosystem/cluster-bootstrap/actions/workflows/spellcheck.yaml/badge.svg)](https://github.com/Enterprise-Neurosystem/cluster-bootstrap/actions/workflows/spellcheck.yaml)
-[![Linting](https://github.com/Enterprise-Neurosystem/cluster-bootstrap/actions/workflows/linting.yaml/badge.svg)](https://github.com/Enterprise-Neurosystem/cluster-bootstrap/actions/workflows/linting.yaml)
+[![Linting](https://github.com/Enterprise-Neurosystem/cluster-bootstrap/actions/workflows/validate-manifests.yaml/badge.svg)](https://github.com/Enterprise-Neurosystem/cluster-bootstrap/actions/workflows/validate-manifests.yaml)
 
 This project is designed to bootstrap an OpenShift cluster using ArgoCD.
 
