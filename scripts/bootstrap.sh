@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# kludge: rhdp setup
+[ "${1}" == "rhdp_setup" ] && exit 0
+
 # shellcheck source=/dev/null
 source "$(dirname "$0")/functions.sh"
 
