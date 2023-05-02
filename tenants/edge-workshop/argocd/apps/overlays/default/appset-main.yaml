@@ -9,26 +9,26 @@ spec:
   generators:
     - list:
         elements:
-        # - cluster: local
-        #   url: https://kubernetes.default.svc
-        #   values:
-        #     name: demo-kafka
-        #     path: tenants/edge-workshop/components/demos/instance/kafka/overlays/kafdrop
-        # - cluster: local
-        #   url: https://kubernetes.default.svc
-        #   values:
-        #     name: demo-pgadmin4
-        #     path: tenants/edge-workshop/components/demos/instance/pgadmin4
-        # - cluster: local
-        #   url: https://kubernetes.default.svc
-        #   values:
-        #     name: demo-rhods
-        #     path: tenants/edge-workshop/components/demos/overlays/rhods
         - cluster: local
           url: https://kubernetes.default.svc
           values:
-            name: demo-edge-collection
-            path: tenants/edge-workshop/components/demos/overlays/edge-collection
+            name: demo-kafka
+            path: tenants/edge-workshop/components/demos/instance/kafka/overlays/kafdrop
+        - cluster: local
+          url: https://kubernetes.default.svc
+          values:
+            name: demo-pgadmin4
+            path: tenants/edge-workshop/components/demos/instance/pgadmin4
+        - cluster: local
+          url: https://kubernetes.default.svc
+          values:
+            name: demo-rhods
+            path: tenants/edge-workshop/components/demos/overlays/rhods
+        # - cluster: local
+        #   url: https://kubernetes.default.svc
+        #   values:
+        #     name: demo-edge-collection
+        #     path: tenants/edge-workshop/components/demos/overlays/edge-collection
         - cluster: local
           url: https://kubernetes.default.svc
           values:
