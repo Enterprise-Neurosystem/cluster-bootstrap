@@ -1,6 +1,8 @@
 kind: Kafka
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
   name: kafka-cluster
 spec:
   kafka:

@@ -4,4 +4,5 @@ metadata:
   annotations:
     openshift.io/description: Kafka Instance
     openshift.io/display-name: Edge Kafka
+    argocd.argoproj.io/sync-wave: "-2"
   name: edge-kafka
