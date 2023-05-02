@@ -1,21 +1,23 @@
 #!/bin/bash
 set -e
-
-# kludge: rhdp setup
-[ "${1}" == "ocp4-workshop-aiml-edge" ] && exit 0
+# set -x
 
 # shellcheck source=/dev/null
 source "$(dirname "$0")/functions.sh"
 
 LANG=C
-SLEEP_SECONDS=10
+SLEEP_SECONDS=8
 ARGO_NS="openshift-gitops"
 ARGO_CHANNEL="stable"
 ARGO_DEPLOY_STABLE=(cluster kam openshift-gitops-applicationset-controller openshift-gitops-redis openshift-gitops-repo-server openshift-gitops-server)
 
+# kludge: rhdp setup
+[ "${1}" == "ocp4-workshop-aiml-edge" ] && \
+  bootstrap_dir=bootstrap/overlays/workshop-rhdp
+
 wait_for_gitops(){
   echo "Waiting for operator to start"
-  until oc get deployment gitops-operator-controller-manager -n openshift-operators
+  until oc get deployment gitops-operator-controller-manager -n openshift-operators >/dev/null 2>&1
   do
     sleep 1
   done
@@ -57,17 +59,25 @@ install_gitops(){
 
 }
 
+select_bootstrap_folder(){
+  PS3="Please select a bootstrap folder by number: "
+  
+  echo
+  select bootstrap_dir in bootstrap/overlays/*/
+  do
+      test -n "$bootstrap_dir" && select_bootstrap_folder
+      echo ">>> Invalid Selection <<<";
+  done
+}
+
 bootstrap_cluster(){
 
-  PS3="Please select a bootstrap folder: "
-  
-  select bootstrap_dir in bootstrap/overlays/*/; 
-  do
-      test -n "$bootstrap_dir" && break;
-      echo ">>> Invalid Selection";
-  done
+  if [ -n "$bootstrap_dir" ]; then
+    echo "Selected: ${bootstrap_dir}"
+  else
+    select_bootstrap_folder
+  fi
 
-  echo "Selected: ${bootstrap_dir}"
   # kustomize build "${bootstrap_dir}" | oc apply -f -
   oc apply -k "${bootstrap_dir}"
 
@@ -81,10 +91,6 @@ bootstrap_cluster(){
   echo "https://${route}"
 }
 
-kludges(){
-  [ -e "scripts/kludges.sh" ] && scripts/kludges.sh
-}
-
 # functions
 setup_bin
 check_bin oc
@@ -96,5 +102,3 @@ check_oc_login
 sealed_secret_check
 install_gitops
 bootstrap_cluster
-
-# kludges

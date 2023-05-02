@@ -21,8 +21,7 @@ usage(){
   echo "
   usage: source scripts/funtions.sh
   "
-
-  get_functions
+  # get_functions
 }
 
 is_sourced() {
