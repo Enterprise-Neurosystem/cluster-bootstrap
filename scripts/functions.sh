@@ -230,7 +230,7 @@ sealed_secret_check(){
     echo "Missing: ${SEALED_SECRETS_SECRET}"
     echo "The master key is required to bootstrap sealed secrets and CANNOT be checked into git."
     echo
-    [ -n NON_INTERACTIVE ] || sealed_secret_create
+    [ -n "${NON_INTERACTIVE}" ] || sealed_secret_create
   fi
 }
 

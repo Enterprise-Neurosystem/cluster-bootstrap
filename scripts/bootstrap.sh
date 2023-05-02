@@ -13,7 +13,7 @@ ARGO_DEPLOY_STABLE=(cluster kam openshift-gitops-applicationset-controller opens
 
 # kludge: rhdp setup
 if [ "${1}" == "ocp4-workshop-aiml-edge" ]; then
-  NON_INTERACTIVE=true
+  export NON_INTERACTIVE=true
   bootstrap_dir=bootstrap/overlays/workshop-rhdp
 fi
 
