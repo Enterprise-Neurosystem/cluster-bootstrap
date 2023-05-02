@@ -41,16 +41,17 @@ wait_for_gitops(){
     oc rollout status deployment "$i" -n ${ARGO_NS} >/dev/null 2>&1
   done
 
-  echo ""
+  echo
   echo "OpenShift GitOps successfully installed."
 }
 
 install_gitops(){
-  echo ""
+  echo
   echo "Installing GitOps Operator."
 
   # kustomize build components/operators/openshift-gitops-operator/operator/overlays/stable | oc apply -f -
   oc apply -k "components/operators/openshift-gitops-operator/operator/overlays/${ARGO_CHANNEL}"
+  oc apply -k "components/operators/openshift-gitops-operator/instance/overlays/default"
 
   echo "Pause ${SLEEP_SECONDS} seconds for the creation of the gitops-operator..."
   sleep ${SLEEP_SECONDS}
