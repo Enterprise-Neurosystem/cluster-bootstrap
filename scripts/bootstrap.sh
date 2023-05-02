@@ -12,8 +12,9 @@ ARGO_CHANNEL="stable"
 ARGO_DEPLOY_STABLE=(cluster kam openshift-gitops-applicationset-controller openshift-gitops-redis openshift-gitops-repo-server openshift-gitops-server)
 
 # kludge: rhdp setup
-[ "${1}" == "ocp4-workshop-aiml-edge" ] && \
-  bootstrap_dir=bootstrap/overlays/workshop-rhdp
+#[ "${1}" == "ocp4-workshop-aiml-edge" ] && \
+#bootstrap_dir=bootstrap/overlays/workshop-rhdp
+[ "${1}" == "ocp4-workshop-aiml-edge" ] && exit 0
 
 wait_for_gitops(){
   echo "Waiting for operator to start"
