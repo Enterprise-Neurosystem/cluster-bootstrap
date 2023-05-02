@@ -53,7 +53,6 @@ install_gitops(){
 
   # kustomize build components/operators/openshift-gitops-operator/operator/overlays/stable | oc apply -f -
   oc apply -k "components/operators/openshift-gitops-operator/operator/overlays/${ARGO_CHANNEL}"
-  oc apply -k "components/operators/openshift-gitops-operator/instance/overlays/default"
 
   echo "Pause ${SLEEP_SECONDS} seconds for the creation of the gitops-operator..."
   sleep ${SLEEP_SECONDS}
@@ -86,6 +85,9 @@ bootstrap_cluster(){
 
   wait_for_gitops
   
+  # apply the cr you know and love
+  oc apply -k "components/operators/openshift-gitops-operator/instance/overlays/default"
+
   echo
   echo "GitOps has successfully deployed!  Check the status of the sync here:"
 
