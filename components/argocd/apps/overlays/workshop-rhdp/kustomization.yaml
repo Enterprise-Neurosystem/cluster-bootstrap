@@ -25,3 +25,11 @@ patches:
       kind: ApplicationSet
       name: cluster-operators-applicationset
     path: patch-operators-applicationset.yaml
+  - target:
+      group: operators.coreos.com
+      kind: OperatorGroup
+      name: rhods-operator-group
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: rhods-ods-operator
