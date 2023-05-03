@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - group-project
   # - individual-project
-  # - top-secret-project
+  # - secret-project
