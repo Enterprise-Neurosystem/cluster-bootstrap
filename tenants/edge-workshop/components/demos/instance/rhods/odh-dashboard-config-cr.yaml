@@ -15,7 +15,7 @@ spec:
     disableBYONImageStream: false
     disableTracking: false
   groupsConfig:
-    adminGroups: rhods-admins
+    adminGroups: 'rhods-admins,workshop-admins'
     allowedGroups: 'system:authenticated'
   modelServerSizes:
     - name: Small
