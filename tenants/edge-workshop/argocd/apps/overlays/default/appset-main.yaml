@@ -44,17 +44,17 @@ spec:
       name: '{{values.name}}'
       annotations:
         argocd.argoproj.io/compare-options: IgnoreExtraneous
-        argocd.argoproj.io/sync-options: Prune=false
+        # argocd.argoproj.io/sync-options: Prune=false
     spec:
       project: edge-workshop-tenant
       syncPolicy:
         automated:
-          prune: false
+          prune: true
           selfHeal: true
         retry:
-          limit: 2
+          limit: 6
           backoff:
-            duration: 5s
+            duration: 15s
             factor: 2
             # maxDuration: 3m
       source:
