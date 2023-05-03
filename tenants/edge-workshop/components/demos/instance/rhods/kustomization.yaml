@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
-  - odh-dashboard-config-cr.yaml
+  # - odh-dashboard-config-cr.yaml
   - rhods-admins-group.yaml
   - rhods-self-provisioner-clusterrolebinding.yaml
   - rhods-self-provisioner-group.yaml
