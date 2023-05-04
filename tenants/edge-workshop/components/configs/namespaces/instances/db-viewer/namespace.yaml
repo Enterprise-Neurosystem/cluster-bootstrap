@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  annotations:
-    openshift.io/description: A place to view all the DB things
-    openshift.io/display-name: DB Viewer
-  name: db-viewer

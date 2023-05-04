@@ -1,7 +1,7 @@
 #!/bin/bash
 
 W_USER=${W_USER:-user}
-W_PASS=${W_PASS:-ThisIsFine}
+W_PASS=${W_PASS:-openshift}
 GROUP_ADMINS=workshop-admins
 GROUP_USERS=workshop-users
 TMP_DIR=scratch
@@ -41,7 +41,7 @@ workshop_create_user_htpasswd(){
 
   which htpasswd || return
 
-  for i in {0..25}
+  for i in {0..50}
   do
     htpasswd -bB ${FILE} "${W_USER}${i}" "${W_PASS}${i}"
   done
@@ -57,11 +57,11 @@ workshop_create_user_ns(){
   [ -e ${OBJ_DIR} ] && rm -rf ${OBJ_DIR}
   [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
 
-  for i in {0..25}
+  for i in {0..50}
   do
     # create ns
     oc -o yaml --dry-run=client \
-      create ns "${W_USER}${i}" > "${OBJ_DIR}/${W_USER}${i}-ns.yml"
+      create ns "${W_USER}${i}" >> "${OBJ_DIR}/${W_USER}${i}-ns.yml"
     oc apply -f "${OBJ_DIR}/${W_USER}${i}-ns.yml"
 
     # create role binding - admin for user
@@ -84,8 +84,48 @@ workshop_create_user_ns(){
     oc apply -f ${OBJ_DIR}
  }
 
+ workshop_generate_user_ns(){
+  OBJ_DIR=${TMP_DIR}/users
+  [ -e ${OBJ_DIR} ] && rm -rf ${OBJ_DIR}
+  [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
+
+  for i in {0..50}
+  do
+
+# create ns
+cat << YAML >> "${OBJ_DIR}/namespace.yaml"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${W_USER}${i}
+YAML
+
+# create rolebinding
+cat << YAML >> "${OBJ_DIR}/admin-rolebinding.yaml"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ${W_USER}${i}-admin
+  namespace: ${W_USER}${i}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: ${W_USER}${i}
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: ${GROUP_ADMINS}
+YAML
+  done
+ }
+
 workshop_clean_user_ns(){
-  for i in {0..25}
+  for i in {0..50}
   do
     oc delete project "${W_USER}${i}"
   done
