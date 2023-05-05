@@ -98,6 +98,8 @@ cat << YAML >> "${OBJ_DIR}/namespace.yaml"
 apiVersion: v1
 kind: Namespace
 metadata:
+  annotations:
+    openshift.io/display-name: Start Here ${W_USER}${i}
   name: ${W_USER}${i}
 YAML
 
