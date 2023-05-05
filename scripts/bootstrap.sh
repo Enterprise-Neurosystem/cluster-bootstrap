@@ -15,6 +15,8 @@ ARGO_DEPLOY_STABLE=(cluster kam openshift-gitops-applicationset-controller opens
 if [ "${1}" == "ocp4-workshop-aiml-edge" ]; then
   export NON_INTERACTIVE=true
   bootstrap_dir=bootstrap/overlays/workshop-rhdp
+  ocp_control_dedicated
+  ocp_create_machineset_autoscale 0 20
 fi
 
 wait_for_gitops(){
