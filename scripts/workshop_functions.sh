@@ -41,7 +41,7 @@ workshop_create_user_htpasswd(){
 
   which htpasswd || return
 
-  for i in {0..50}
+  for i in {1..50}
   do
     htpasswd -bB ${FILE} "${W_USER}${i}" "${W_PASS}${i}"
   done
@@ -89,7 +89,7 @@ workshop_create_user_htpasswd(){
   [ -e ${OBJ_DIR} ] && rm -rf ${OBJ_DIR}
   [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
 
-  for i in {0..50}
+  for i in {1..50}
   do
 
 # create ns
@@ -129,7 +129,7 @@ YAML
  }
 
 workshop_clean_user_ns(){
-  for i in {0..50}
+  for i in {1..50}
   do
     oc delete project "${W_USER}${i}"
   done
