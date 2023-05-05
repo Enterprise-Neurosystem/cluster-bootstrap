@@ -47,9 +47,9 @@ spec:
   template:
     metadata:
       name: '{{values.name}}'
-      annotations:
-        argocd.argoproj.io/compare-options: IgnoreExtraneous
-        # argocd.argoproj.io/sync-options: Prune=false
+      # annotations:
+      #   argocd.argoproj.io/compare-options: IgnoreExtraneous
+      #   argocd.argoproj.io/sync-options: Prune=false
     spec:
       project: edge-workshop-tenant
       syncPolicy:
