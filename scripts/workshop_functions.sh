@@ -52,39 +52,39 @@ workshop_create_user_htpasswd(){
 
 }
 
-workshop_create_user_ns(){
-  OBJ_DIR=${TMP_DIR}/users
-  [ -e ${OBJ_DIR} ] && rm -rf ${OBJ_DIR}
-  [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
+# workshop_create_user_ns(){
+#   OBJ_DIR=${TMP_DIR}/users
+#   [ -e ${OBJ_DIR} ] && rm -rf ${OBJ_DIR}
+#   [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
 
-  for i in {0..50}
-  do
-    # create ns
-    oc -o yaml --dry-run=client \
-      create ns "${W_USER}${i}" >> "${OBJ_DIR}/${W_USER}${i}-ns.yml"
-    oc apply -f "${OBJ_DIR}/${W_USER}${i}-ns.yml"
+#   for i in {0..50}
+#   do
+#     # create ns
+#     oc -o yaml --dry-run=client \
+#       create ns "${W_USER}${i}" >> "${OBJ_DIR}/${W_USER}${i}-ns.yml"
+#     oc apply -f "${OBJ_DIR}/${W_USER}${i}-ns.yml"
 
-    # create role binding - admin for user
-    oc -o yaml --dry-run=client \
-      -n "${W_USER}${i}" \
-      create rolebinding "${W_USER}${i}-admin" \
-      --group "${GROUP_ADMINS}" \
-      --user "${W_USER}${i}" \
-      --clusterrole admin > "${OBJ_DIR}/${W_USER}${i}-ns-admin-rb.yml"
+#     # create role binding - admin for user
+#     oc -o yaml --dry-run=client \
+#       -n "${W_USER}${i}" \
+#       create rolebinding "${W_USER}${i}-admin" \
+#       --group "${GROUP_ADMINS}" \
+#       --user "${W_USER}${i}" \
+#       --clusterrole admin > "${OBJ_DIR}/${W_USER}${i}-ns-admin-rb.yml"
 
-    # create role binding - view for workshop group
-    oc -o yaml --dry-run=client \
-      -n "${W_USER}${i}" \
-      create rolebinding "${W_USER}${i}-view" \
-      --group "${GROUP_USERS}" \
-      --clusterrole view > "${OBJ_DIR}/${W_USER}${i}-rb-ns-view.yml"
-  done
+#     # create role binding - view for workshop group
+#     oc -o yaml --dry-run=client \
+#       -n "${W_USER}${i}" \
+#       create rolebinding "${W_USER}${i}-view" \
+#       --group "${GROUP_USERS}" \
+#       --clusterrole view > "${OBJ_DIR}/${W_USER}${i}-rb-ns-view.yml"
+#   done
 
-  # apply objects created in scratch dir
-    oc apply -f ${OBJ_DIR}
- }
+#   # apply objects created in scratch dir
+#     oc apply -f ${OBJ_DIR}
+#  }
 
- workshop_generate_user_ns(){
+ workshop_create_user_ns(){
   OBJ_DIR=${TMP_DIR}/users
   [ -e ${OBJ_DIR} ] && rm -rf ${OBJ_DIR}
   [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
@@ -122,6 +122,10 @@ subjects:
   name: ${GROUP_ADMINS}
 YAML
   done
+
+  # apply objects created in scratch dir
+    oc apply -f ${OBJ_DIR}
+
  }
 
 workshop_clean_user_ns(){
