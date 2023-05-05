@@ -16,7 +16,7 @@ if [ "${1}" == "ocp4-workshop-aiml-edge" ]; then
   export NON_INTERACTIVE=true
   bootstrap_dir=bootstrap/overlays/workshop-rhdp
   ocp_control_dedicated
-  ocp_create_machineset_autoscale 0 20
+  ocp_create_machineset_autoscale 0 30
 fi
 
 wait_for_gitops(){
