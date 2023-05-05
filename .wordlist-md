@@ -1,4 +1,3 @@
-
 ACK
 ACM
 ACS
@@ -107,6 +106,7 @@ config
 configmap
 configs
 cp
+cpu
 cr
 creds
 csv
@@ -225,4 +225,5 @@ useable
 vSphere
 vsphere
 workspaces
+xlarge
 yaml

@@ -52,39 +52,7 @@ workshop_create_user_htpasswd(){
 
 }
 
-# workshop_create_user_ns(){
-#   OBJ_DIR=${TMP_DIR}/users
-#   [ -e ${OBJ_DIR} ] && rm -rf ${OBJ_DIR}
-#   [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
-
-#   for i in {0..50}
-#   do
-#     # create ns
-#     oc -o yaml --dry-run=client \
-#       create ns "${W_USER}${i}" >> "${OBJ_DIR}/${W_USER}${i}-ns.yml"
-#     oc apply -f "${OBJ_DIR}/${W_USER}${i}-ns.yml"
-
-#     # create role binding - admin for user
-#     oc -o yaml --dry-run=client \
-#       -n "${W_USER}${i}" \
-#       create rolebinding "${W_USER}${i}-admin" \
-#       --group "${GROUP_ADMINS}" \
-#       --user "${W_USER}${i}" \
-#       --clusterrole admin > "${OBJ_DIR}/${W_USER}${i}-ns-admin-rb.yml"
-
-#     # create role binding - view for workshop group
-#     oc -o yaml --dry-run=client \
-#       -n "${W_USER}${i}" \
-#       create rolebinding "${W_USER}${i}-view" \
-#       --group "${GROUP_USERS}" \
-#       --clusterrole view > "${OBJ_DIR}/${W_USER}${i}-rb-ns-view.yml"
-#   done
-
-#   # apply objects created in scratch dir
-#     oc apply -f ${OBJ_DIR}
-#  }
-
- workshop_create_user_ns(){
+workshop_create_user_ns(){
   OBJ_DIR=${TMP_DIR}/users
   [ -e ${OBJ_DIR} ] && rm -rf ${OBJ_DIR}
   [ ! -d ${OBJ_DIR} ] && mkdir -p ${OBJ_DIR}
@@ -128,7 +96,131 @@ YAML
   # apply objects created in scratch dir
     oc apply -f ${OBJ_DIR}
 
- }
+}
+
+workshop_load_test(){
+  for i in {1..50}
+  do
+
+echo "---
+apiVersion: kubeflow.org/v1
+kind: Notebook
+metadata:
+  annotations:
+    notebooks.opendatahub.io/inject-oauth: 'true'
+    notebooks.opendatahub.io/last-image-selection: 's2i-generic-data-science-notebook:py3.9-v2'
+    notebooks.opendatahub.io/last-size-selection: Workshop (custom)
+    notebooks.opendatahub.io/oauth-logout-url: >-
+      https://rhods-dashboard-redhat-ods-applications.apps.cluster-r8mh4.sandbox8.opentlc.com/projects/group-project?notebookLogout=${W_USER}${i}
+    opendatahub.io/username: admin
+    openshift.io/description: 'Load Testing'
+    openshift.io/display-name: ${W_USER}${i}
+  name: ${W_USER}${i}
+  namespace: rhods-notebooks
+  labels:
+    app: ${W_USER}${i}
+    opendatahub.io/dashboard: 'true'
+    opendatahub.io/odh-managed: 'true'
+    opendatahub.io/user: admin
+spec:
+  template:
+    spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: nvidia.com/gpu.present
+                    operator: NotIn
+                    values:
+                      - 'true'
+              weight: 1
+      containers:
+        - resources:
+            limits:
+              cpu: '6'
+              memory: 20Gi
+            requests:
+              cpu: '6'
+              memory: 20Gi
+          name: notebook
+          command:
+            - sh
+            - -c
+            - |
+              cat /dev/urandom >/dev/null 2>&1
+          ports:
+            - containerPort: 8888
+              name: notebook-port
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /opt/app-root/src
+              name: notebook
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/redhat-ods-applications/s2i-generic-data-science-notebook:py3.8-v1
+          workingDir: /opt/app-root/src
+        - resources:
+            limits:
+              cpu: 100m
+              memory: 64Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          name: oauth-proxy
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          ports:
+            - containerPort: 8443
+              name: oauth-proxy
+              protocol: TCP
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /etc/oauth/config
+              name: oauth-config
+            - mountPath: /etc/tls/private
+              name: tls-certificates
+          image: >-
+            registry.redhat.io/openshift4/ose-oauth-proxy@sha256:4bef31eb993feb6f1096b51b4876c65a6fb1f4401fee97fa4f4542b6b7c9bc46
+          command:
+            - sleep
+            - infinity
+      serviceAccountName: ${W_USER}${i}
+      volumes:
+        - name: notebook
+          persistentVolumeClaim:
+            claimName: ${W_USER}${i}
+        - name: oauth-config
+          emptyDir: {}
+        - name: tls-certificates
+          emptyDir: {}
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  annotations:
+  name: ${W_USER}${i}
+  namespace: rhods-notebooks
+  labels:
+    opendatahub.io/dashboard: 'true'
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: gp3-csi
+  volumeMode: Filesystem
+" | oc apply -f -
+  done
+}
+
+workshop_load_test_clean(){
+  oc delete notebooks.kubeflow.org --all -A
+  oc -n rhods-notebooks delete pvc --all
+}
 
 workshop_clean_user_ns(){
   for i in {1..50}
