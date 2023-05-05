@@ -56,14 +56,14 @@ spec:
     #     requests:
     #       cpu: '1'
     #       memory: 8Gi
-    - name: Medium
+    - name: Workshop (custom)
       resources:
         limits:
           cpu: '6'
-          memory: 24Gi
+          memory: 20Gi
         requests:
           cpu: '3'
-          memory: 24Gi
+          memory: 10Gi
     # - name: Large
     #   resources:
     #     limits:
