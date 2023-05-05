@@ -8,6 +8,7 @@ patches:
   - target:
       group: autoscaling.openshift.io
       kind: ClusterAutoscaler
+      name: default
     patch: |-
       - op: replace
         path: /spec/resourceLimits/maxNodesTotal

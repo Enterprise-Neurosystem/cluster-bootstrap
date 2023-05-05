@@ -21,7 +21,9 @@ k8s_api_dump_noncore(){
       jq -r --arg api "$api" \
       '.resources | .[]? | "\($api) \(.name): [ \(.verbs | join(",")) ]"'
   done
+
+  killall 'oc'
 }
 
 k8s_api_dump_core
-# k8s_api_dump_noncore
+k8s_api_dump_noncore
