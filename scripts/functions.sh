@@ -268,8 +268,9 @@ aws_start_ocp4_cluster(){
 }
 
 aws_create_gpu_machineset(){
-  MACHINE_SET=$(oc -n openshift-machine-api get machinesets.machine.openshift.io -o name | grep worker | head -n1)
   INSTANCE_TYPE=${1:-g4dn.12xlarge}
+
+  MACHINE_SET=$(oc -n openshift-machine-api get machinesets.machine.openshift.io -o name | grep worker | head -n1)
 
   oc -n openshift-machine-api get "${MACHINE_SET}" -o yaml | \
     sed '/machine/ s/-worker/-gpu/g
@@ -277,6 +278,30 @@ aws_create_gpu_machineset(){
       s/instanceType.*/instanceType: '"${INSTANCE_TYPE}"'/
       s/replicas.*/replicas: 0/' | \
     oc apply -f -
+}
+
+aws_create_machineset_autoscale(){
+  MACHINE_MIN=${1:-0}
+  MACHINE_MAX=${2:-4}
+  # MACHINE_SET=${3:-$(oc -n openshift-machine-api get machinesets.machine.openshift.io -o name | grep worker | head -n1)}
+
+  for set in $(oc -n openshift-machine-api get machinesets.machine.openshift.io -o name | sed 's@/@@' )
+  do
+cat << YAML | oc apply -f -
+apiVersion: "autoscaling.openshift.io/v1beta1"
+kind: "MachineAutoscaler"
+metadata:
+  name: "${set}"
+  namespace: "openshift-machine-api"
+spec:
+  minReplicas: ${MACHINE_MIN}
+  maxReplicas: ${MACHINE_MAX}
+  scaleTargetRef:
+    apiVersion: machine.openshift.io/v1beta1
+    kind: MachineSet
+    name: worker-us-east-1a
+YAML
+  done
 }
 
 ocp_control_as_workers(){
