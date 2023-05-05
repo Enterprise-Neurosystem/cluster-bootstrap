@@ -2,12 +2,32 @@
 
 The following is info related to the demo environment and workshops elements.
 
-instance: m5.4xlarge
-cpu: 16
-memory: 62G + 2G (core services)
+- instance: m5.4xlarge
+- cpu: 16
+- memory: 62G + 2G (core services)
+- users per node: 3-6
+- max nodes: 20
 
-users per node: 3
-max nodes: 20
+## RHDP Scripts
+
+Deployment
+
+```
+bash scripts/bootstrap.sh ocp4-workshop-aiml-edge
+```
+
+Load testing
+
+```
+. scripts/workshop_functions
+
+# start load test
+workshop_load_test
+sleep 400
+
+# remove load test
+workshop_load_test_clean
+```
 
 ## Links
 
