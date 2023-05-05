@@ -99,7 +99,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    openshift.io/display-name: Start Here ${W_USER}${i}
+    openshift.io/display-name: Start Here - ${W_USER}${i}
   name: ${W_USER}${i}
 YAML
 
