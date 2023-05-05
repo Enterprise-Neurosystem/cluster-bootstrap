@@ -3,7 +3,7 @@
 W_USER=${W_USER:-user}
 W_PASS=${W_PASS:-openshift}
 GROUP_ADMINS=workshop-admins
-GROUP_USERS=workshop-users
+# GROUP_USERS=workshop-users
 TMP_DIR=scratch
 # HTPASSWD=htpasswd-workshop-secret
 # WORKSHOP_USERS=25
