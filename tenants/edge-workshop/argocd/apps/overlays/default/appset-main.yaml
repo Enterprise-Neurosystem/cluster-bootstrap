@@ -33,7 +33,7 @@ spec:
           url: https://kubernetes.default.svc
           values:
             name: edge-workshop-namespaces-users
-            path: tenants/edge-workshop/components/configs/namespaces/instances/workshop-users
+            path: components/demos/instance/workshop-users
         - cluster: local
           url: https://kubernetes.default.svc
           values:

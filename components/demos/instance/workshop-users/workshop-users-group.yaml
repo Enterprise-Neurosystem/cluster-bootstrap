@@ -3,7 +3,6 @@ apiVersion: user.openshift.io/v1
 metadata:
   name: workshop-users
 users:
-  - user0
   - user1
   - user2
   - user3
@@ -29,3 +28,28 @@ users:
   - user23
   - user24
   - user25
+  - user26
+  - user27
+  - user28
+  - user29
+  - user30
+  - user31
+  - user32
+  - user33
+  - user34
+  - user35
+  - user36
+  - user37
+  - user38
+  - user39
+  - user40
+  - user41
+  - user42
+  - user43
+  - user44
+  - user45
+  - user46
+  - user47
+  - user48
+  - user49
+  - user50

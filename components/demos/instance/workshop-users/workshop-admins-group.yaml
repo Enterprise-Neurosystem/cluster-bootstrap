@@ -1,7 +1,7 @@
 kind: Group
 apiVersion: user.openshift.io/v1
 metadata:
-  name: rhods-admins
+  name: workshop-admins
 users:
   - admin
   - opentlc-mgr

@@ -4,3 +4,5 @@ kind: Kustomization
 resources:
   - admin-rolebinding.yaml
   - namespace.yaml
+  - workshop-admins-group.yaml
+  - workshop-users-group.yaml

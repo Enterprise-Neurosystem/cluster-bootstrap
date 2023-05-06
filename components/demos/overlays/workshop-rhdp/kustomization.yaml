@@ -5,7 +5,6 @@ resources:
   - ../../instance/custom-notebooks
   - ../../instance/rhods
   - ../../instance/rhods-projects
-  - ../../instance/workshop-users
 
 patches:
   - target:
@@ -15,9 +14,3 @@ patches:
       - op: replace
         path: /metadata/namespace
         value: redhat-ods-applications
-  - target:
-      group: user.openshift.io
-      version: v1
-      kind: Group
-      name: workshop-users
-    path: patch-workshop-users.yaml
