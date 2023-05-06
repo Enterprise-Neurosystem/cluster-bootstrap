@@ -4,4 +4,6 @@ kind: Kustomization
 resources:
   - admin-rolebinding.yaml
   - edit-rolebinding.yaml
+  - limit-range.yaml
   - namespace.yaml
+  - quota.yaml
