@@ -5,5 +5,4 @@ resources:
   - edit-rolebinding.yaml
   - limit-range.yaml
   - namespace.yaml
-  - quota-compute.yaml
-  - quota-storage.yaml
+  - quota.yaml
