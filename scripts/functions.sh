@@ -304,6 +304,19 @@ YAML
   done
 }
 
+ocp_scale_all_machineset(){
+  REPLICAS=${1:-1}
+
+  # scale workers
+  oc -n openshift-machine-api \
+    get machineset \
+    -o name | grep worker | \
+      xargs \
+        oc -n openshift-machine-api \
+        scale --replicas="${REPLICAS}"
+
+}
+
 ocp_control_as_workers(){
   oc patch schedulers.config.openshift.io/cluster --type merge --patch '{"spec":{"mastersSchedulable": true}}'
 }
@@ -317,13 +330,8 @@ ocp_save_money(){
   # run work on masters
   ocp_control_as_workers
 
-  # scale down workers
-  oc -n openshift-machine-api \
-    get machineset \
-    -o name | grep worker | \
-      xargs \
-        oc -n openshift-machine-api \
-        scale --replicas=1
+  # scale to zero
+  ocp_scale_all_machineset 0
 }
 
 ocp_expose_image_registry(){

@@ -17,6 +17,7 @@ if [ "${1}" == "ocp4-workshop-aiml-edge" ]; then
   bootstrap_dir=bootstrap/overlays/workshop-rhdp
   ocp_control_dedicated
   ocp_create_machineset_autoscale 0 30
+  ocp_scale_all_machineset 1
 fi
 
 wait_for_gitops(){
