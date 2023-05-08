@@ -18,5 +18,5 @@ metadata:
   namespace: group-project
 spec:
   hard:
-    requests.storage: 20Gi
+    requests.storage: 100Gi
     persistentvolumeclaims: '40'

@@ -13,5 +13,5 @@ spec:
         memory: 64Mi
         cpu: 100m
       max:
-        cpu: '8'
-        memory: 16Gi
+        cpu: '6'
+        memory: 20Gi
