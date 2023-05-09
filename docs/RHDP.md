@@ -33,3 +33,4 @@ workshop_load_test_clean
 
 - https://github.com/rhpds/agnosticv/tree/master/sandboxes-gpte/OCP4_WORKSHOP_AIML_EDGE
 - https://github.com/redhat-gpte-devopsautomation/bookbag-edge
+- https://github.com/openshift-homeroom
