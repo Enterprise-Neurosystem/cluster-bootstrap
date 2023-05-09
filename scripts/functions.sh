@@ -283,9 +283,9 @@ aws_create_gpu_machineset(){
 ocp_create_machineset_autoscale(){
   MACHINE_MIN=${1:-0}
   MACHINE_MAX=${2:-4}
-  # MACHINE_SET=${3:-$(oc -n openshift-machine-api get machinesets.machine.openshift.io -o name | grep worker | head -n1)}
+  MACHINE_SETS=${3:-$(oc -n openshift-machine-api get machinesets.machine.openshift.io -o name | sed 's@.*/@@' )}
 
-  for set in $(oc -n openshift-machine-api get machinesets.machine.openshift.io -o name | sed 's@.*/@@' )
+  for set in ${MACHINE_SETS}
   do
 cat << YAML | oc apply -f -
 apiVersion: "autoscaling.openshift.io/v1beta1"
@@ -306,14 +306,13 @@ YAML
 
 ocp_scale_all_machineset(){
   REPLICAS=${1:-1}
+  MACHINE_SETS=${2:-$(oc -n openshift-machine-api get machineset -o name)}
 
   # scale workers
-  oc -n openshift-machine-api \
-    get machineset \
-    -o name | grep worker | \
-      xargs \
-        oc -n openshift-machine-api \
-        scale --replicas="${REPLICAS}"
+  echo "${MACHINE_SETS}" | \
+    xargs \
+      oc -n openshift-machine-api \
+      scale --replicas="${REPLICAS}"
 
 }
 

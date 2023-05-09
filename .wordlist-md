@@ -105,6 +105,7 @@ clusterrolebinding
 config
 configmap
 configs
+contrib
 cp
 cpu
 cr
