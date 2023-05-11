@@ -101,6 +101,7 @@ YAML
 workshop_load_test(){
   APPS_INGRESS=apps.cluster-cfzzs.sandbox1911.opentlc.com
   NOTEBOOK_IMAGE_NAME=s2i-minimal-notebook:1.2
+  NOTEBOOK_SIZE="Demo / Workshop"
 
   for i in {1..50}
   do
@@ -114,7 +115,7 @@ metadata:
   annotations:
     notebooks.opendatahub.io/inject-oauth: 'true'
     notebooks.opendatahub.io/last-image-selection: '${NOTEBOOK_IMAGE_NAME}'
-    notebooks.opendatahub.io/last-size-selection: Demo / Workshop
+    notebooks.opendatahub.io/last-size-selection: ${NOTEBOOK_SIZE} 
     notebooks.opendatahub.io/oauth-logout-url: >-
       https://rhods-dashboard-redhat-ods-applications.${APPS_INGRESS}/notebookController/${NB_USER}/home
     opendatahub.io/link: >-
@@ -291,7 +292,7 @@ spec:
 }
 
 workshop_load_test_clean(){
-  oc delete notebooks.kubeflow.org --all -A
+  oc -n rhods-notebooks delete notebooks.kubeflow.org --all
   oc -n rhods-notebooks delete pvc --all
 }
 
