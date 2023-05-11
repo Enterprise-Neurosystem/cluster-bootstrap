@@ -84,7 +84,7 @@ spec:
       resources:
         limits:
           cpu: '6'
-          memory: 20Gi
+          memory: 16Gi
         requests:
           cpu: '3'
-          memory: 10Gi
+          memory: 12Gi
