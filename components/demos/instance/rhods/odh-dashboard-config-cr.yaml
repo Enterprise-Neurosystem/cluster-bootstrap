@@ -80,7 +80,7 @@ spec:
     #     requests:
     #       cpu: '15'
     #       memory: 120Gi
-    - name: "Workshop / Demo"
+    - name: "Demo / Workshop"
       resources:
         limits:
           cpu: '6'
