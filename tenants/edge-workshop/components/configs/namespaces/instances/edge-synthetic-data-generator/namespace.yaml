@@ -5,3 +5,7 @@ metadata:
     openshift.io/description: Edge Data Gen Workshop Namespace
     openshift.io/display-name: Edge Data Gen Workshop
   name: edge-synthetic-data-generator
+  labels:
+    kubernetes.io/metadata.name: edge-synthetic-data-generator
+    modelmesh-enabled: 'true'
+    opendatahub.io/dashboard: 'true'
