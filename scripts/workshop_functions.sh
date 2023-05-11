@@ -102,7 +102,7 @@ workshop_load_test(){
   APPS_INGRESS=apps.cluster-cfzzs.sandbox1911.opentlc.com
   NOTEBOOK_IMAGE_NAME=s2i-minimal-notebook:1.2
 
-  for i in {2..3}
+  for i in {1..50}
   do
 
       NB_USER="user${i}"
