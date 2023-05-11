@@ -286,7 +286,7 @@ spec:
     requests:
       storage: 10Gi
   volumeMode: Filesystem
-" #| oc apply -f -
+" | oc apply -f -
   done
 }
 
