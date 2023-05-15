@@ -43,7 +43,7 @@ wait_for_gitops(){
   for i in "${ARGO_DEPLOY_STABLE[@]}"
   do
     echo "Waiting for deployment $i"
-    oc rollout status deployment "$i" -n ${ARGO_NS} >/dev/null 2>&1
+    oc rollout status deployment --timeout=2m "$i" -n ${ARGO_NS} >/dev/null 2>&1 || true
   done
 
   echo
@@ -89,9 +89,6 @@ bootstrap_cluster(){
   oc apply -k "${bootstrap_dir}"
 
   wait_for_gitops
-  
-  # apply the cr you know and love
-  oc apply -k "components/operators/openshift-gitops-operator/instance/overlays/default"
 
   echo
   echo "GitOps has successfully deployed!  Check the status of the sync here:"
