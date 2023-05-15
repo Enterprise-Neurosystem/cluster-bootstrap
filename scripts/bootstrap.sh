@@ -14,10 +14,8 @@ ARGO_DEPLOY_STABLE=(cluster kam openshift-gitops-applicationset-controller opens
 # kludge: rhdp setup
 if [ "${1}" == "ocp4-workshop-aiml-edge" ]; then
   export NON_INTERACTIVE=true
+  export EDGE_WORKSHOP=true
   bootstrap_dir=bootstrap/overlays/workshop-rhdp
-  ocp_control_dedicated
-  ocp_create_machineset_autoscale 0 30
-  ocp_scale_all_machineset 1
 fi
 
 wait_for_gitops(){
@@ -98,6 +96,14 @@ bootstrap_cluster(){
   echo "https://${route}"
 }
 
+# kludge: rhdp setup
+post_bootstrap(){
+  [ -n "${EDGE_WORKSHOP}" ] || return
+  ocp_control_dedicated
+  ocp_create_machineset_autoscale 0 30
+  ocp_scale_all_machineset 2
+}
+
 # functions
 setup_bin
 check_bin oc
@@ -109,3 +115,4 @@ check_oc_login
 sealed_secret_check
 install_gitops
 bootstrap_cluster
+post_bootstrap
