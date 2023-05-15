@@ -10,15 +10,15 @@ The following is info related to the demo environment and workshops elements.
 
 ## RHDP Scripts
 
-Deployment
+Cluster Deployment
 
-Note: This is run for the event in RHDP
+Note: This is already run for the event in RHDP
 
 ```
 bash scripts/bootstrap.sh ocp4-workshop-aiml-edge
 ```
 
-Cluster Setup
+Post Cluster Deployment
 
 ```
 git clone https://github.com/Enterprise-Neurosystem/edge-failure-prediction.git
@@ -32,7 +32,7 @@ scripts/bootstrap.sh
 cd ..
 ```
 
-Load testing
+Load Testing
 
 ```
 . scripts/workshop_functions
