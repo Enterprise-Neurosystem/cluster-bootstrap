@@ -102,6 +102,21 @@ post_bootstrap(){
   ocp_control_dedicated
   ocp_create_machineset_autoscale 0 30
   # ocp_scale_all_machineset 2
+
+  [ ! -e scratch ] && mkdir scratch
+  cd scratch
+
+  git clone https://github.com/Enterprise-Neurosystem/edge-failure-prediction.git
+  cd edge-failure-prediction
+  scripts/bootstrap.sh
+  cd ..
+
+  git clone https://github.com/Enterprise-Neurosystem/edge-anomaly-detection.git
+  cd edge-anomaly-detection
+  scripts/bootstrap.sh
+  cd ..
+  
+  cd ..
 }
 
 # functions
