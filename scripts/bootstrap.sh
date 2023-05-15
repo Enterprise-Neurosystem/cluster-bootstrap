@@ -101,7 +101,7 @@ post_bootstrap(){
   [ -n "${EDGE_WORKSHOP}" ] || return
   ocp_control_dedicated
   ocp_create_machineset_autoscale 0 30
-  ocp_scale_all_machineset 2
+  # ocp_scale_all_machineset 2
 }
 
 # functions
