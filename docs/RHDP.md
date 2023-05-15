@@ -12,8 +12,24 @@ The following is info related to the demo environment and workshops elements.
 
 Deployment
 
+Note: This is run for the event in RHDP
+
 ```
 bash scripts/bootstrap.sh ocp4-workshop-aiml-edge
+```
+
+Cluster Setup
+
+```
+git clone https://github.com/Enterprise-Neurosystem/edge-failure-prediction.git
+cd edge-failure-prediction
+scripts/bootstrap.sh
+cd ..
+
+git clone https://github.com/Enterprise-Neurosystem/edge-anomaly-detection.git
+cd edge-anomaly-detection
+scripts/bootstrap.sh
+cd ..
 ```
 
 Load testing
