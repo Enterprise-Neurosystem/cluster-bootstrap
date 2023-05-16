@@ -6,7 +6,8 @@ commonAnnotations:
   argocd.argoproj.io/sync-options: Prune=true
 
 resources:
-- ../../base
+  - ../../base
+  - link-workshop.yaml
 
 patches:
   - target:
