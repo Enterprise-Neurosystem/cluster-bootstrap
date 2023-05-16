@@ -99,9 +99,6 @@ bootstrap_cluster(){
 # kludge: rhdp setup
 post_bootstrap(){
   [ -n "${EDGE_WORKSHOP}" ] || return
-  ocp_control_dedicated
-  ocp_create_machineset_autoscale 0 30
-  # ocp_scale_all_machineset 2
 
   [ ! -e scratch ] && mkdir scratch
   cd scratch
@@ -117,6 +114,10 @@ post_bootstrap(){
   cd ..
   
   cd ..
+
+  ocp_control_dedicated
+  ocp_create_machineset_autoscale 0 30
+  # ocp_scale_all_machineset 2
 }
 
 # functions
