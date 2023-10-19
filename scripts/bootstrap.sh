@@ -128,7 +128,7 @@ check_bin oc
 check_oc_login
 
 # bootstrap
-sealed_secret_check
+# sealed_secret_check
 install_gitops
 bootstrap_cluster
 post_bootstrap
