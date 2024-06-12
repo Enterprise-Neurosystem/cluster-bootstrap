@@ -2,32 +2,66 @@
 # shellcheck disable=SC2015,SC1091
 set -e
 
-setup_venv(){
+usage(){
+  echo "
+  usage: scripts/lint.sh
+  "
+}
+
+py_setup_venv(){
   python3 -m venv venv
   source venv/bin/activate
   pip install -q -U pip
-  pip install -q awscli
 
-  check_venv || return
+  py_check_venv || usage
 }
 
-check_venv(){
+py_check_venv(){
   # activate python venv
-  [ -d venv ] && . venv/bin/activate || setup_venv
+  [ -d venv ] && . venv/bin/activate || py_setup_venv
   [ -e requirements.txt ] && pip install -q -r requirements.txt
 }
 
-# activate python venv
-check_venv
+py_bin_checks(){
+  which python || exit 0
+  which pip || exit 0
+}
 
-# chcek scripts
-which shellcheck && shellcheck scripts/*.sh
+lint_scripts(){
+  which shellcheck || return
+  find . -name '*.sh' -not \( -path '*/venv/*' -o -path '*/scratch/*' \) -print0 | xargs -0 shellcheck
+}
 
-# check spelling
-pyspelling -c .pyspelling.yml
+lint_spelling(){
+  which aspell || return
+  which pyspelling || return
+  [ -e .pyspelling.yml ] || return
+  [ -e .wordlist-md ] || return
 
-# check yaml
-yamllint . && echo "YAML check passed :)"
+  pyspelling -c .pyspelling.yml
+}
 
-# validate manifests
-scripts/validate_manifests.sh
+lint_dockerfiles(){
+  which hadolint || return
+  find . -not -path "./scratch/*" \( -name Dockerfile -o -name Containerfile \) -exec hadolint {} \;
+}
+
+lint_yaml(){
+  which yamllint || return
+  yamllint . || return
+  echo "YAML check passed :)"
+}
+
+lint_kustomize(){
+  [ -e scripts/validate_manifests.sh ] || return
+  scripts/validate_manifests.sh
+}
+
+py_check_venv
+py_bin_checks
+
+lint_spelling     || exit 1
+lint_scripts      || exit 1
+lint_dockerfiles  || exit 1
+lint_yaml         || exit 1
+lint_kustomize    || exit 1

@@ -8,7 +8,7 @@ source "$(dirname "$0")/functions.sh"
 LANG=C
 SLEEP_SECONDS=8
 ARGO_NS="openshift-gitops"
-ARGO_CHANNEL="stable"
+ARGO_CHANNEL="gitops-1.9"
 ARGO_DEPLOY_STABLE=(cluster kam openshift-gitops-applicationset-controller openshift-gitops-redis openshift-gitops-repo-server openshift-gitops-server)
 
 # kludge: rhdp setup
@@ -20,7 +20,7 @@ fi
 
 wait_for_gitops(){
   echo "Waiting for operator to start"
-  until oc get deployment gitops-operator-controller-manager -n openshift-operators >/dev/null 2>&1
+  until oc get deployment gitops-operator-controller-manager -n openshift-gitops-operator >/dev/null 2>&1
   do
     sleep 1
   done
