@@ -2,6 +2,8 @@ kind: DataScienceCluster
 apiVersion: datasciencecluster.opendatahub.io/v1
 metadata:
   name: default-dsc
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
   labels:
     app.kubernetes.io/name: datasciencecluster
     app.kubernetes.io/instance: default
