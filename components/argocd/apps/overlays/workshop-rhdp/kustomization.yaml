@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ../../base
   - ../../../../../tenants/edge-workshop/argocd/apps/overlays/default
-  - ../../../../../tenants/edge-workshop/argocd/projects/overlays/default
+  # - ../../../../../tenants/edge-workshop/argocd/projects/overlays/default
 
 patches:
   - target:
