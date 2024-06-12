@@ -1,6 +1,0 @@
-- op: replace
-  path: /spec/template/spec/source/repoURL
-  value: 'https://github.com/Enterprise-Neurosystem/cluster-bootstrap.git'
-- op: replace
-  path: /spec/template/spec/source/targetRevision
-  value: testing
