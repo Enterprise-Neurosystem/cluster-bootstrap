@@ -7,12 +7,13 @@ source "$(dirname "$0")/functions.sh"
 
 LANG=C
 SLEEP_SECONDS=8
+RHDP_NAME=ocp4-workshop-aiml-edge
 ARGO_NS="openshift-gitops"
 ARGO_CHANNEL="gitops-1.9"
 ARGO_DEPLOY_STABLE=(cluster kam openshift-gitops-applicationset-controller openshift-gitops-redis openshift-gitops-repo-server openshift-gitops-server)
 
 # kludge: rhdp setup
-if [ "${1}" == "ocp4-workshop-aiml-edge" ]; then
+if [ "${1}" == "${RHDP_NAME}" ]; then
   export NON_INTERACTIVE=true
   export EDGE_WORKSHOP=true
   bootstrap_dir=bootstrap/overlays/workshop-rhdp
