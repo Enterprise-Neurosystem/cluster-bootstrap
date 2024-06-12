@@ -15,5 +15,5 @@ matrix:
             - code
             - pre
     sources:
-      - '!dump/*|!**/INFO.md|!**/TODO.md|!venv/**|**/*.md'
+      - '!**/INFO.md|!**/TODO.md|!venv/**|!scratch/**|!dump/**|**/*.md'
     default_encoding: utf-8

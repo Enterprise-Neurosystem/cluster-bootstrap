@@ -7,10 +7,20 @@ rules:
   new-line-at-end-of-file: disable
   indentation:
     indent-sequences: whatever
-    ignore: dump/
+    ignore: kludgeops/
   braces:
-    ignore: components/operators/grafana-operator/base/instance/grafana.yaml
+    min-spaces-inside: 0
+    max-spaces-inside: 1
   truthy:
     ignore: .github/workflows/
   trailing-spaces:
-    ignore: components/operators/openshift-gitops-operator/instance/overlays/default/patch-resource-customizations.yaml
+    ignore: |
+    #   components/operators/openshift-gitops-operator/instance/overlays/default/patch-resource-customizations.yaml
+  empty-lines:
+    ignore: |
+      components/operators/ack-controllers/base/adoptedresources-crd.yaml
+
+ignore:
+  - "scratch/*"
+  - "components/containers/web-terminal/src/*"
+  - "components/operators/gpu-operator-certified/operator/components/console-plugin-helm/*"
